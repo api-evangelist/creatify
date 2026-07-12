@@ -1,0 +1,352 @@
+{
+  "info": {
+    "name": "Creatify API",
+    "description": "Programmatic AI avatar and marketing-video generation. Base URL https://api.creatify.ai/api. All requests require X-API-ID and X-API-KEY headers (issued from the in-app API Dashboard; an active paid subscription is required). Media generation is asynchronous - create a job, then poll GET /{resource}/{id}/ until status is done, or supply a webhook_url. Some paths (Custom Templates, Product-to-Video, Music, AI Editing get) are modeled from documented product areas - verify against docs.creatify.ai.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      { "key": "in", "value": "header", "type": "string" }
+    ]
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "https://api.creatify.ai/api", "type": "string" },
+    { "key": "apiId", "value": "", "type": "string" },
+    { "key": "apiKey", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "AI Avatar",
+      "item": [
+        {
+          "name": "Create AI avatar video (Lipsync v1)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"text\": \"Meet our new product.\",\n  \"creator\": \"<persona_id>\",\n  \"accent\": \"<voice_id>\",\n  \"aspect_ratio\": \"9x16\"\n}" },
+            "url": { "raw": "{{baseUrl}}/lipsyncs/", "host": ["{{baseUrl}}"], "path": ["lipsyncs", ""] },
+            "description": "Convert text or audio plus a chosen avatar into a talking-head video. Async - poll GET /lipsyncs/{id}/."
+          }
+        },
+        {
+          "name": "Get AI avatar video (Lipsync v1)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/lipsyncs/:id/", "host": ["{{baseUrl}}"], "path": ["lipsyncs", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Poll the status/progress of a Lipsync v1 job."
+          }
+        },
+        {
+          "name": "Create multi-scene AI avatar video (Lipsync v2)",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"video_inputs\": [],\n  \"aspect_ratio\": \"9x16\",\n  \"model_version\": \"aurora_v1_fast\"\n}" },
+            "url": { "raw": "{{baseUrl}}/lipsyncs_v2/", "host": ["{{baseUrl}}"], "path": ["lipsyncs_v2", ""] },
+            "description": "Generate a multi-scene avatar video. Async - poll GET /lipsyncs_v2/{id}/."
+          }
+        },
+        {
+          "name": "Get multi-scene AI avatar video (Lipsync v2)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/lipsyncs_v2/:id/", "host": ["{{baseUrl}}"], "path": ["lipsyncs_v2", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Poll the status/progress of a Lipsync v2 job."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Link-to-Video",
+      "item": [
+        {
+          "name": "Create a link from a URL",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"url\": \"https://example.com/product-page\"\n}" },
+            "url": { "raw": "{{baseUrl}}/links/", "host": ["{{baseUrl}}"], "path": ["links", ""] },
+            "description": "Scrape a product/landing-page URL into a Creatify link."
+          }
+        },
+        {
+          "name": "Create a link-to-video job",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"link\": \"<link_id>\",\n  \"aspect_ratio\": \"9x16\",\n  \"video_length\": 30\n}" },
+            "url": { "raw": "{{baseUrl}}/link_to_videos/", "host": ["{{baseUrl}}"], "path": ["link_to_videos", ""] },
+            "description": "Create a video-generation job from a link. Async - poll GET /link_to_videos/{id}/."
+          }
+        },
+        {
+          "name": "Get a link-to-video job",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/link_to_videos/:id/", "host": ["{{baseUrl}}"], "path": ["link_to_videos", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Poll status/progress of a link-to-video job."
+          }
+        },
+        {
+          "name": "Render a link-to-video job",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/link_to_videos/:id/render/", "host": ["{{baseUrl}}"], "path": ["link_to_videos", ":id", "render", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Render a previewed link-to-video job. Billed 4 credits per 30 seconds."
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Shorts (deprecated)",
+      "item": [
+        {
+          "name": "Create an AI short video",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"script\": \"Your script here\",\n  \"aspect_ratio\": \"9x16\",\n  \"style\": \"4K realistic\"\n}" },
+            "url": { "raw": "{{baseUrl}}/ai_shorts/", "host": ["{{baseUrl}}"], "path": ["ai_shorts", ""] },
+            "description": "Convert a text script into a short-form video. Deprecated in favor of Link-to-Video / AI Avatar."
+          }
+        },
+        {
+          "name": "Get an AI short video",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/ai_shorts/:id/", "host": ["{{baseUrl}}"], "path": ["ai_shorts", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Poll status/progress of an AI short job."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Custom Templates (modeled)",
+      "item": [
+        {
+          "name": "Create a video from a custom template",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/custom_templates/", "host": ["{{baseUrl}}"], "path": ["custom_templates", ""] },
+            "description": "Generate a video from a customizable template. Modeled path - verify against docs.creatify.ai."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Product-to-Video (modeled)",
+      "item": [
+        {
+          "name": "Create a video ad from product images",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/product_to_video/", "host": ["{{baseUrl}}"], "path": ["product_to_video", ""] },
+            "description": "Generate a studio-quality video ad from product images. Modeled path - verify against docs.creatify.ai."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Text-to-Speech",
+      "item": [
+        {
+          "name": "Generate speech from text",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{\n  \"script\": \"Hello from Creatify.\",\n  \"accent\": null,\n  \"webhook_url\": null\n}" },
+            "url": { "raw": "{{baseUrl}}/text_to_speech/", "host": ["{{baseUrl}}"], "path": ["text_to_speech", ""] },
+            "description": "Generate an ultra-realistic voiceover from text (up to 8000 chars). 1 credit per 30 seconds."
+          }
+        },
+        {
+          "name": "Get a text-to-speech job",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/text_to_speech/:id/", "host": ["{{baseUrl}}"], "path": ["text_to_speech", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Poll status/progress of a text-to-speech job."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Personas",
+      "item": [
+        {
+          "name": "Get all available avatars",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/personas/", "host": ["{{baseUrl}}"], "path": ["personas", ""] },
+            "description": "List the catalog of 1500+ AI avatars/personas."
+          }
+        },
+        {
+          "name": "Get all available avatars (paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/personas/paginated/", "host": ["{{baseUrl}}"], "path": ["personas", "paginated", ""] },
+            "description": "Paginated list of personas."
+          }
+        },
+        {
+          "name": "Get avatar by id",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/personas/:id/", "host": ["{{baseUrl}}"], "path": ["personas", ":id", ""], "variable": [{ "key": "id", "value": "" }] },
+            "description": "Get a persona by id."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Voices",
+      "item": [
+        {
+          "name": "Get all available voices",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/voices/", "host": ["{{baseUrl}}"], "path": ["voices", ""] },
+            "description": "List available AI voices and accents."
+          }
+        },
+        {
+          "name": "Get voices (paginated)",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/voices/paginated/", "host": ["{{baseUrl}}"], "path": ["voices", "paginated", ""] },
+            "description": "Paginated list of voices."
+          }
+        }
+      ]
+    },
+    {
+      "name": "Music (modeled)",
+      "item": [
+        {
+          "name": "Get music categories",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/music_categories/", "host": ["{{baseUrl}}"], "path": ["music_categories", ""] },
+            "description": "List background-music categories. Modeled path - verify against docs.creatify.ai."
+          }
+        },
+        {
+          "name": "Get musics",
+          "request": {
+            "method": "GET",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" }
+            ],
+            "url": { "raw": "{{baseUrl}}/musics/", "host": ["{{baseUrl}}"], "path": ["musics", ""] },
+            "description": "List background-music tracks. Modeled path - verify against docs.creatify.ai."
+          }
+        }
+      ]
+    },
+    {
+      "name": "AI Editing",
+      "item": [
+        {
+          "name": "Create an AI editing job",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "X-API-ID", "value": "{{apiId}}" },
+              { "key": "X-API-KEY", "value": "{{apiKey}}" },
+              { "key": "Content-Type", "value": "application/json" }
+            ],
+            "body": { "mode": "raw", "raw": "{}" },
+            "url": { "raw": "{{baseUrl}}/ai_editing/", "host": ["{{baseUrl}}"], "path": ["ai_editing", ""] },
+            "description": "Enhance and stylize an existing video with professional templates. Async - poll GET /ai_editing/{id}/."
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,275 @@
+aid: creatify
+url: https://raw.githubusercontent.com/api-evangelist/creatify/refs/heads/main/apis.yml
+name: Creatify
+kind: company
+description: Creatify is an AI avatar and marketing-video generation platform that
+  turns product URLs, scripts, images, and text into short-form video ads narrated
+  by ultra-realistic AI avatars. The Creatify API (base https://api.creatify.ai/api,
+  authenticated with X-API-ID / X-API-KEY headers) exposes AI Avatar (Lipsync v1/v2
+  and Aurora image-to-avatar), Link-to-Video, AI Shorts and Custom Template video
+  generation, Text-to-Speech and voice cloning, a 1500+ Persona/avatar catalog, a
+  voice catalog, and a music library. Generation is asynchronous - create a job,
+  then poll the job by id or receive a webhook - with billing metered in credits.
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+tags:
+- AI Avatars
+- Video Generation
+- AI Video
+- Generative AI
+- Marketing Video
+- Text to Speech
+- UGC Ads
+- AI Avatar
+created: '2026-07-11'
+modified: '2026-07-11'
+specificationVersion: '0.19'
+apis:
+- aid: creatify:creatify-ai-avatar-api
+  name: Creatify AI Avatar API
+  tags:
+  - AI Avatars
+  - AI Video
+  - Video Generation
+  - Lipsync
+  - Aurora
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2
+    type: Documentation
+  - url: https://docs.creatify.ai/api-reference/text-to-speech
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Turn text or audio plus a chosen avatar/persona into ultra-realistic
+    talking-head videos. Lipsync v1 (single scene) and Lipsync v2 (multi-scene, with
+    per-scene characters, voices, and backgrounds), plus the Aurora image-to-avatar
+    model. Asynchronous - POST to create, then GET the job by id to poll status.
+- aid: creatify:creatify-link-to-video-api
+  name: Creatify Link-to-Video API
+  tags:
+  - Video Generation
+  - Marketing Video
+  - URL to Video
+  - AI Video
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/quickstart
+    type: Documentation
+  - url: https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Transform a product or landing-page URL into a short-form video ad.
+    Create a link from a URL (POST /links/), generate a link-to-video job, and render
+    it (POST /link_to_videos/{id}/render/). Async create-then-poll; billed per 30
+    seconds of rendered video.
+- aid: creatify:creatify-ai-shorts-api
+  name: Creatify AI Shorts API
+  tags:
+  - Text to Video
+  - AI Video
+  - Short Form Video
+  - Generative AI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts
+    type: Documentation
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Convert a text script into a high-impact, viral short-form video
+    (POST /ai_shorts/, GET /ai_shorts/{id}/). Accepts script, aspect ratio, and a
+    visual style. Note - Creatify documents AI Shorts as deprecated in favor of
+    Link-to-Video and AI Avatar; retained here for completeness.
+- aid: creatify:creatify-custom-templates-api
+  name: Creatify Custom Templates API
+  tags:
+  - Marketing Video
+  - Templates
+  - Video Generation
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-reference
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Generate videos from customizable, brand-ready templates by supplying
+    template variables (POST /custom_templates/, GET /custom_templates/{id}/). Async
+    create-then-poll; billed per 30 seconds of rendered video.
+- aid: creatify:creatify-product-to-video-api
+  name: Creatify Product-to-Video API
+  tags:
+  - Marketing Video
+  - Product Video
+  - AI Video
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-documentation/product-to-video/product-to-video
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-documentation/product-to-video/product-to-video
+    type: Documentation
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Create studio-quality video ads from product images (POST
+    /product_to_video/, GET /product_to_video/{id}/). Billed per image and per 30
+    seconds of generated footage. Endpoint paths are modeled from Creatify's
+    documented product-to-video product area.
+- aid: creatify:creatify-text-to-speech-api
+  name: Creatify Text-to-Speech API
+  tags:
+  - Text to Speech
+  - Voiceover
+  - Audio
+  - Generative AI
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-reference/text-to-speech
+    type: Documentation
+  - url: https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Generate ultra-realistic voiceovers from text (up to 8000 characters)
+    using AI voices and accents (POST /text_to_speech/, GET /text_to_speech/{id}/).
+    Supports a webhook_url for status updates. Billed 1 credit per 30 seconds of
+    audio.
+- aid: creatify:creatify-personas-api
+  name: Creatify Personas API
+  tags:
+  - AI Avatars
+  - Personas
+  - Avatar Catalog
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Browse the catalog of 1500+ realistic AI avatars/personas and manage
+    custom avatars (BYOA). List personas (GET /personas/, GET /personas/paginated/)
+    and get a persona by id (GET /personas/{id}/) to reference in avatar and
+    link-to-video jobs.
+- aid: creatify:creatify-voices-api
+  name: Creatify Voices API
+  tags:
+  - Voices
+  - Voice Cloning
+  - Text to Speech
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-reference
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: List the available AI voices and accents (GET /voices/, GET
+    /voices/paginated/) used by Text-to-Speech and AI Avatar jobs, and manage cloned
+    custom voices. Voice ids are referenced as the accent/voice on generation
+    endpoints.
+- aid: creatify:creatify-music-api
+  name: Creatify Music API
+  tags:
+  - Music
+  - Background Music
+  - Media Library
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-reference
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-reference
+    type: APIReference
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Access the background-music library - list music categories (GET
+    /music_categories/) and tracks (GET /musics/) - to attach soundtracks to
+    generated videos. Read-only catalog endpoints; no credit cost to browse.
+- aid: creatify:creatify-ai-editing-api
+  name: Creatify AI Editing API
+  tags:
+  - AI Video
+  - Video Editing
+  - Marketing Video
+  image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+  humanURL: https://docs.creatify.ai/api-documentation/ai-editing/ai-editing
+  baseURL: https://api.creatify.ai/api
+  properties:
+  - url: https://docs.creatify.ai/api-documentation/ai-editing/ai-editing
+    type: Documentation
+  - url: openapi/creatify-openapi.yml
+    type: OpenAPI
+  - url: collections/creatify.postman_collection.json
+    type: PostmanCollection
+  - url: collections/creatify.opencollection.json
+    type: OpenCollection
+  description: Automatically enhance and stylize an existing video with professional
+    templates (POST /ai_editing/, GET /ai_editing/{id}/). Async create-then-poll.
+common:
+- type: Authentication
+  url: authentication/creatify-authentication.yml
+- type: DomainSecurity
+  url: security/creatify-domain-security.yml
+- type: LinkedIn
+  url: https://www.linkedin.com/company/creatify-ai
+- type: Website
+  url: https://creatify.ai
+- type: Documentation
+  url: https://docs.creatify.ai
+- type: Plans
+  url: plans/creatify-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/creatify-rate-limits.yml
+- type: FinOps
+  url: finops/creatify-finops.yml
+- url: https://creatify.ai/blog
+  type: Blog
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,101 @@
+specification: FinOps Framework
+specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Creatify
+providerId: creatify
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- AI Avatars
+- Video Generation
+- Marketing Video
+- FinOps
+- Cost Management
+- FOCUS
+description: >-
+  FinOps view of Creatify spend. Creatify is billed as a monthly subscription
+  that includes a credit allowance; all API generation draws down credits, with
+  video costing roughly 5 credits per 30 seconds (Aurora 1 credit/second, Aurora
+  fast 0.5 credit/second), audio 1 credit per 30 seconds, AI Scripts ~1 credit
+  per request, and specialized jobs (Product-to-Video ~2 credits/image or ~10
+  credits/30s, Ad Clone ~12 credits per 5s) at their own rates. Cost is therefore
+  a function of how much media is generated, not per-API-call. Overage beyond the
+  monthly allowance is handled by upgrading tier or buying custom credit packages
+  (Enterprise).
+notes: >-
+  Per-endpoint credit rates are grounded in Creatify's billing docs as of the
+  review date and should be reconciled before cost modeling. The dominant cost
+  lever is total seconds of video/audio generated and the model version chosen
+  (standard vs Aurora vs Aurora fast).
+sources:
+- https://creatify.ai/pricing
+- https://docs.creatify.ai/billing
+- https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render
+- https://focus.finops.org/focus-specification/v1-3/
+alignedWith:
+  framework: FinOps Foundation Framework
+  frameworkUrl: https://www.finops.org/framework/
+  dataSpec: FOCUS
+  dataSpecVersion: '1.3'
+  dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
+publisherName: Creatify
+serviceCategory: AI and Machine Learning
+billingModel:
+  pricingCategory: Subscription-Based
+  billingFrequency: Monthly
+  billingCurrency: USD
+  chargeCategories:
+  - Usage
+  - Purchase
+focusColumns:
+  ServiceName: Creatify API
+  ServiceCategory: AI and Machine Learning
+  ProviderName: Creatify
+  PublisherName: Creatify
+  InvoiceIssuerName: Creatify
+  BillingCurrency: USD
+  ChargeCategory: Usage
+  PricingCategory: Subscription-Based
+meters:
+- name: video_credits
+  description: Credits consumed generating video, roughly 5 per 30 seconds (Aurora 1/second, Aurora fast 0.5/second).
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+  - model_version
+- name: audio_credits
+  description: Credits consumed generating Text-to-Speech audio, roughly 1 per 30 seconds.
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+- name: specialized_credits
+  description: Credits for specialized jobs (Product-to-Video per image or per 30s, Ad Clone per 5s, AI Scripts per request).
+  unit: credits
+  aggregation: sum
+  dimensions:
+  - account
+  - endpoint
+- name: subscription_fee
+  description: Monthly subscription fee that includes the base credit allowance for the plan.
+  unit: currency
+  aggregation: sum
+  dimensions:
+  - account
+  - plan
+principles:
+- name: Visibility
+  description: Track credits consumed per endpoint, model version, and account; the credits_used field on each job response is the unit of cost.
+- name: Allocation
+  description: Attribute credit spend to campaigns/teams by tagging jobs and separating API keys per workload where possible.
+- name: Optimization
+  description: Prefer preview over full render while iterating, choose Aurora fast for cheaper avatar seconds, keep scripts tight, and batch generation to stay within the plan's credit allowance before buying overage.
+- name: Accountability
+  description: Assign an owner per subscription/API key and review monthly credit burn against the plan allowance; upgrade tier or negotiate custom credit packages only when sustained overage warrants it.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

@@ -1,0 +1,64 @@
+specification: API Commons Rate Limits
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/RateLimits
+provider: Creatify
+providerId: creatify
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- AI Avatars
+- Video Generation
+- Marketing Video
+- Rate Limiting
+- Quotas
+description: >-
+  Creatify does not publish fixed numeric per-minute request rate limits for the
+  API. In practice, throughput is governed by two things: (1) your subscription's
+  monthly credit allowance, which caps how much video/audio you can generate, and
+  (2) the asynchronous nature of generation - each create call enqueues a job
+  that renders in the background, so callers create a job then poll GET
+  /{resource}/{id}/ (or wait for a webhook) rather than blocking. Callers should
+  poll on a reasonable interval and back off on 429 responses.
+notes: >-
+  No explicit numeric request-rate or concurrency limit is documented as of the
+  review date. The effective throughput limiter is the credit allowance per plan
+  (see plans/creatify-plans-pricing.yml) and background render queue times.
+  Verify any concurrency caps for high-volume/Enterprise accounts with Creatify.
+sources:
+- https://docs.creatify.ai/quickstart
+- https://docs.creatify.ai/billing
+- https://docs.creatify.ai/api-reference/text-to-speech
+responseCodes:
+  throttled: 429
+limits:
+- name: API Request Rate
+  scope: account
+  metric: requests
+  limit: not published
+  notes: No fixed numeric per-minute request-rate limit is documented for the Creatify API.
+- name: Monthly Credit Allowance
+  scope: account
+  metric: credits
+  limit: per plan
+  notes: Generation is capped by the plan's monthly credit allowance (e.g. API Starter 500, API Pro 2000).
+- name: Concurrent Render Jobs
+  scope: account
+  metric: jobs
+  limit: not published
+  notes: Concurrency of background render jobs is not documented; Enterprise accounts may negotiate higher throughput.
+- name: Text-to-Speech Script Length
+  scope: request
+  metric: characters
+  limit: 8000
+  notes: The text_to_speech script field is capped at 8000 characters per request.
+policies:
+- name: Asynchronous Generation
+  description: Media endpoints return a job with a status immediately; clients poll GET /{resource}/{id}/ until status is "done" or supply a webhook_url to be notified.
+- name: Credit Metering
+  description: Throughput is bounded by credits consumed (roughly 5 credits per 30s of video, 1 credit per 30s of audio) rather than by a request-per-second cap.
+- name: Backoff Strategy
+  description: Clients should implement exponential backoff with jitter and honor Retry-After on 429 responses, and poll job status on a reasonable interval rather than tight-looping.
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

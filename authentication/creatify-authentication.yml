@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/creatify-openapi.yml
+summary:
+  types:
+  - apiKey
+schemes:
+- name: apiId
+  type: apiKey
+  in: header
+  parameterName: X-API-ID
+  description: >-
+    Your unique Creatify API identifier. Retrieved from the in-app API Dashboard
+    at app.creatify.ai (account menu -> API Dashboard -> Show API Keys). Sent on
+    every request alongside X-API-KEY.
+  sources:
+  - openapi/creatify-openapi.yml
+- name: apiKey
+  type: apiKey
+  in: header
+  parameterName: X-API-KEY
+  description: >-
+    Your secret Creatify API key. Acts as a password - keep it server-side and
+    never expose it in client-side code. Retrieved from the in-app API Dashboard
+    at app.creatify.ai. Sent on every request alongside X-API-ID. API access
+    requires an active paid subscription.
+  sources:
+  - openapi/creatify-openapi.yml

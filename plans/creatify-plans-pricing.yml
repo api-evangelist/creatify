@@ -1,0 +1,163 @@
+specification: API Commons Plans
+specificationVersion: '0.1'
+schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans
+provider: Creatify
+providerId: creatify
+created: '2026-07-11'
+modified: '2026-07-11'
+reconciled: false
+tags:
+- AI Avatars
+- Video Generation
+- Marketing Video
+- Text to Speech
+- Plans
+description: >-
+  Creatify sells subscriptions that bundle a monthly credit allowance; all video
+  and audio generation - in the app and through the API - is metered in credits
+  (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of
+  audio). There are consumer plans (Free, Starter, Pro) and, per Creatify's API
+  billing docs, dedicated API tiers (API Starter, API Pro) plus Enterprise.
+  API access requires an active paid subscription. Prices below are grounded in
+  Creatify's public pricing and billing pages as of the review date and should
+  be reconciled before billing decisions.
+notes: >-
+  Consumer plan prices: Free $0 (10 credits, watermarked), Starter $39/mo (100
+  credits), Pro $99/mo (300 credits, 1500+ AI actors, 3 custom avatars).
+  API tiers per docs.creatify.ai/billing: API Starter $99/mo (500 credits), API
+  Pro $299/mo (2,000 credits), Enterprise custom with volume discounts. Annual
+  billing and higher credit bundles are offered; verify current numbers on the
+  Creatify pricing page.
+sources:
+- https://creatify.ai/pricing
+- https://creatify.ai/api
+- https://docs.creatify.ai/billing
+- https://docs.creatify.ai/quickstart
+plans:
+- id: creatify-free
+  name: Free
+  type: free
+  description: >-
+    No-cost consumer tier for evaluation. Watermarked exports, limited models
+    and templates. Does not include API access.
+  entries:
+  - label: Included Credits
+    name: free_credits
+    type: usage
+    metric: credits
+    limit: 10
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '0'
+    userMultiplied: false
+  elements:
+  - name: 300 AI Actors
+  - name: Watermarked Exports
+  - name: No API Access
+- id: creatify-starter
+  name: Starter
+  type: paid
+  description: >-
+    Entry consumer plan with watermark removal and a larger credit allowance.
+  entries:
+  - label: Included Credits
+    name: starter_credits
+    type: usage
+    metric: credits
+    limit: 100
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '39'
+    userMultiplied: false
+  elements:
+  - name: Watermark Removal
+  - name: 50+ Models
+  - name: 200+ Templates
+- id: creatify-pro
+  name: Pro
+  type: paid
+  description: >-
+    Consumer growth plan with the full 1500+ AI actor catalog, custom avatars,
+    and team seats.
+  entries:
+  - label: Included Credits
+    name: pro_credits
+    type: usage
+    metric: credits
+    limit: 300
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '99'
+    userMultiplied: false
+  elements:
+  - name: 1500+ Realistic AI Actors
+  - name: 3 Custom Avatars
+  - name: Up to 5 Team Seats
+- id: creatify-api-starter
+  name: API Starter
+  type: paid
+  description: >-
+    Dedicated API subscription tier per Creatify's API billing docs. Includes
+    a monthly credit allowance consumed by API generation calls.
+  entries:
+  - label: Included API Credits
+    name: api_starter_credits
+    type: usage
+    metric: credits
+    limit: 500
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '99'
+    userMultiplied: false
+  elements:
+  - name: Full API Access
+  - name: All Generation Endpoints
+- id: creatify-api-pro
+  name: API Pro
+  type: paid
+  description: >-
+    Higher-volume API subscription tier per Creatify's API billing docs.
+  entries:
+  - label: Included API Credits
+    name: api_pro_credits
+    type: usage
+    metric: credits
+    limit: 2000
+    timeFrame: month
+    geo: global
+    unit: 1
+    price: '299'
+    userMultiplied: false
+  elements:
+  - name: Full API Access
+  - name: Higher Credit Allowance
+- id: creatify-enterprise
+  name: Enterprise
+  type: enterprise
+  description: >-
+    Custom plan for high-volume API and platform usage - volume-based credit
+    discounts, custom credit packages, white-label options, and a dedicated
+    account manager. Contact Creatify sales.
+  entries:
+  - label: Enterprise Agreement
+    name: enterprise
+    type: flat
+    metric: contract
+    limit: -1
+    timeFrame: year
+    geo: global
+    unit: 1
+    price: contact sales
+    userMultiplied: false
+  elements:
+  - name: API Volume-Based Discounts
+  - name: Custom Credit Packages
+  - name: White-Label Options
+  - name: Dedicated Account Manager
+maintainers:
+- FN: Kin Lane
+  email: kin@apievangelist.com

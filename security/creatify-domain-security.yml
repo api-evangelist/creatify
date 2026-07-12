@@ -1,0 +1,28 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: creatify.ai
+  https: true
+  cert_expires: Oct  8 09:14:10 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: api.creatify.ai
+  https: true
+  cert_expires: Dec 14 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+  hsts_include_subdomains: true
+- host: docs.creatify.ai
+  https: true
+  cert_expires: Sep 11 02:07:26 2026 GMT
+  hsts: true
+  hsts_max_age: 63072000
+domains:
+- domain: creatify.ai
+  dnssec: false
+  caa: []
+  spf: true
+  spf_record: v=spf1 include:_spf.google.com include:sendgrid.net include:47086660.spf07.hubspotemail.net ~all
+  dmarc: true
+  dmarc_policy: none

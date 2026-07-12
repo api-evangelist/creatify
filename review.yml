@@ -1,0 +1,130 @@
+aid: creatify
+name: Creatify
+review:
+  question: Does Creatify expose a documented public WebSocket API?
+  answer: false
+  date: '2026-07-11'
+  reviewer: API Evangelist
+  asyncapiSpecCreated: false
+  asyncapiScopeNote: |
+    No AsyncAPI document was authored. Creatify's public API is entirely
+    request/response REST over HTTPS under https://api.creatify.ai/api. Long-
+    running generation (avatar videos, link-to-video, text-to-speech, etc.) is
+    handled with an asynchronous create-then-poll pattern - POST creates a job
+    that returns an id and a status, and the client polls GET /{resource}/{id}/
+    for status/progress until status is "done". Some endpoints (e.g. Text-to-
+    Speech) additionally accept a webhook_url so Creatify can POST a status
+    update to the caller when the job finishes. Server-to-client push here is an
+    outbound HTTP webhook, not a WebSocket or SSE stream, so there is no
+    server-push transport on Creatify's own API to model in AsyncAPI.
+findings:
+  summary: |
+    Creatify does not publish a documented public WebSocket API. Creatify is an
+    AI avatar and marketing-video generation platform. Its public API
+    (base https://api.creatify.ai/api) is pure request/response REST over
+    HTTPS, authenticated with X-API-ID and X-API-KEY headers. Media generation
+    is asynchronous: a POST creates a job and returns { id, status, progress },
+    and the caller polls GET /{resource}/{id}/ until status is "done" (or
+    "error"), optionally supplying a webhook_url to be notified. No realtime,
+    bidirectional, or streaming WebSocket (ws:// or wss://) endpoint is
+    documented anywhere in Creatify's API reference as of the review date. A
+    Text Generator endpoint offers a "streaming" mode, but that is HTTP response
+    streaming on a REST call, not a WebSocket.
+  accessModel: |
+    The Creatify API is real and documented (docs.creatify.ai) but gated: API
+    access requires an active paid subscription and credentials are issued from
+    the in-app API Dashboard (app.creatify.ai). Creatify documents dedicated
+    API Starter ($99/mo, 500 credits) and API Pro ($299/mo, 2,000 credits)
+    tiers plus Enterprise, in addition to consumer Free/Starter/Pro plans.
+    Usage is metered in credits (roughly 5 credits per 30s of video, 1 credit
+    per 30s of audio).
+  transports:
+    - protocol: REST
+      scheme: https
+      baseURL: https://api.creatify.ai/api
+      documented: true
+      note: All Creatify API product areas (AI Avatar, Link-to-Video, Text-to-Speech, Personas, Voices, Music, etc.) are REST over HTTPS with X-API-ID/X-API-KEY headers.
+    - protocol: Async Poll
+      scheme: https
+      documented: true
+      note: Long-running jobs use create-then-poll - POST creates a job with a status, then GET /{resource}/{id}/ is polled until status is "done". Client-initiated polling, not server push.
+    - protocol: Webhook
+      scheme: https
+      documented: true
+      note: Some endpoints (e.g. Text-to-Speech) accept a webhook_url and POST a status update to the caller on completion. Outbound HTTP webhook, not WebSocket.
+    - protocol: WebSocket
+      scheme: wss
+      documented: false
+      note: No WebSocket endpoint is documented anywhere in Creatify's API reference as of the review date.
+  endpointsConfirmedRest:
+    - POST https://api.creatify.ai/api/links/
+    - POST https://api.creatify.ai/api/link_to_videos/
+    - GET  https://api.creatify.ai/api/link_to_videos/
+    - GET  https://api.creatify.ai/api/link_to_videos/{id}/
+    - POST https://api.creatify.ai/api/link_to_videos/{id}/render/
+    - POST https://api.creatify.ai/api/lipsyncs/
+    - GET  https://api.creatify.ai/api/lipsyncs/{id}/
+    - POST https://api.creatify.ai/api/lipsyncs/preview/
+    - POST https://api.creatify.ai/api/lipsyncs/{id}/render/
+    - POST https://api.creatify.ai/api/lipsyncs_v2/
+    - GET  https://api.creatify.ai/api/lipsyncs_v2/{id}/
+    - POST https://api.creatify.ai/api/ai_shorts/
+    - GET  https://api.creatify.ai/api/ai_shorts/{id}/
+    - POST https://api.creatify.ai/api/text_to_speech/
+    - GET  https://api.creatify.ai/api/text_to_speech/{id}/
+    - GET  https://api.creatify.ai/api/personas/
+    - GET  https://api.creatify.ai/api/personas/paginated/
+    - GET  https://api.creatify.ai/api/personas/{id}/
+    - GET  https://api.creatify.ai/api/voices/
+    - GET  https://api.creatify.ai/api/voices/paginated/
+    - POST https://api.creatify.ai/api/inspiration_jobs/
+    - GET  https://api.creatify.ai/api/inspiration_jobs/
+    - POST https://api.creatify.ai/api/ai_editing/
+  endpointsModeled:
+    - POST https://api.creatify.ai/api/custom_templates/
+    - GET  https://api.creatify.ai/api/custom_templates/{id}/
+    - POST https://api.creatify.ai/api/product_to_video/
+    - GET  https://api.creatify.ai/api/product_to_video/{id}/
+    - GET  https://api.creatify.ai/api/ai_editing/{id}/
+    - GET  https://api.creatify.ai/api/music_categories/
+    - GET  https://api.creatify.ai/api/musics/
+  modeledNote: |
+    Paths under endpointsModeled are inferred from Creatify's documented product
+    areas (Custom Templates, Product-to-Video, AI Editing, Music) plus the
+    platform's consistent /api/{resource}/ + /api/{resource}/{id}/ REST
+    convention, because a fully-published reference page for the exact path was
+    not available at review time. They should be verified against the live docs.
+    None of them are WebSocket surfaces.
+sources:
+  - url: https://docs.creatify.ai/quickstart
+    type: Documentation
+    note: Base URL api.creatify.ai/api, X-API-ID/X-API-KEY headers, credentials from the in-app API Dashboard.
+  - url: https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render
+    type: APIReference
+    note: Link-to-Video render endpoint POST /api/link_to_videos/{id}/render/, 4 credits per 30s; async status/progress fields.
+  - url: https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2
+    type: Documentation
+    note: AI Avatar v2 create POST /api/lipsyncs_v2/ and poll GET /api/lipsyncs_v2/{id}/. REST only.
+  - url: https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech
+    type: APIReference
+    note: Text-to-Speech POST /api/text_to_speech/ with webhook_url; 1 credit per 30s. Webhook, not WebSocket.
+  - url: https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated
+    type: APIReference
+    note: Personas catalog GET /api/personas/paginated/ (1500+ avatars). REST.
+  - url: https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts
+    type: Documentation
+    note: AI Shorts POST /api/ai_shorts/, GET /api/ai_shorts/{id}/ (documented as deprecated).
+  - url: https://docs.creatify.ai/billing
+    type: Documentation
+    note: Credit model and API tiers - API Starter $99/500 credits, API Pro $299/2000 credits, Enterprise custom.
+actions:
+  asyncapiPath: null
+  apisYmlUpdated: true
+  reason: |
+    No WebSocket protocol surface exists. Creatify's public API is
+    request/response REST (https://api.creatify.ai/api) with an asynchronous
+    create-then-poll pattern for long-running media jobs and optional outbound
+    webhooks for completion. No AsyncAPI document was created because there is
+    no server-push transport (WebSocket or SSE) on Creatify's own API to model;
+    completion notifications are outbound HTTP webhooks that carry no persistent
+    connection.

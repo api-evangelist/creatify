@@ -1,0 +1,179 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify API",
+    "version": "1.0",
+    "description": "Programmatic AI avatar and marketing-video generation. Base URL https://api.creatify.ai/api. All requests require X-API-ID and X-API-KEY headers; an active paid subscription is required. Media generation is asynchronous - create a job, then poll GET /{resource}/{id}/ or supply a webhook_url. Paths marked 'modeled' are inferred from documented product areas - verify against docs.creatify.ai."
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "apikey": [
+        { "key": "X-API-ID", "value": "{{apiId}}", "in": "header" },
+        { "key": "X-API-KEY", "value": "{{apiKey}}", "in": "header" }
+      ]
+    }
+  },
+  "items": [
+    {
+      "info": { "name": "AI Avatar", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create AI avatar video (Lipsync v1).", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/lipsyncs/", "body": { "type": "json", "data": "{\"text\":\"Meet our new product.\",\"creator\":\"<persona_id>\",\"accent\":\"<voice_id>\",\"aspect_ratio\":\"9x16\"}" } },
+          "docs": "Convert text or audio plus a chosen avatar into a talking-head video. Async - poll GET /lipsyncs/{id}/."
+        },
+        {
+          "info": { "name": "Get AI avatar video (Lipsync v1).", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/lipsyncs/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Poll the status/progress of a Lipsync v1 job."
+        },
+        {
+          "info": { "name": "Create multi-scene AI avatar video (Lipsync v2).", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/lipsyncs_v2/", "body": { "type": "json", "data": "{\"video_inputs\":[],\"aspect_ratio\":\"9x16\",\"model_version\":\"aurora_v1_fast\"}" } },
+          "docs": "Generate a multi-scene avatar video. Async - poll GET /lipsyncs_v2/{id}/."
+        },
+        {
+          "info": { "name": "Get multi-scene AI avatar video (Lipsync v2).", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/lipsyncs_v2/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Poll the status/progress of a Lipsync v2 job."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Link-to-Video", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a link from a URL.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/links/", "body": { "type": "json", "data": "{\"url\":\"https://example.com/product-page\"}" } },
+          "docs": "Scrape a product/landing-page URL into a Creatify link."
+        },
+        {
+          "info": { "name": "Create a link-to-video job.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/link_to_videos/", "body": { "type": "json", "data": "{\"link\":\"<link_id>\",\"aspect_ratio\":\"9x16\",\"video_length\":30}" } },
+          "docs": "Create a video-generation job from a link. Async - poll GET /link_to_videos/{id}/."
+        },
+        {
+          "info": { "name": "Get a link-to-video job.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/link_to_videos/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Poll status/progress of a link-to-video job."
+        },
+        {
+          "info": { "name": "Render a link-to-video job.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/link_to_videos/:id/render/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Render a previewed link-to-video job. Billed 4 credits per 30 seconds."
+        }
+      ]
+    },
+    {
+      "info": { "name": "AI Shorts (deprecated)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create an AI short video.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/ai_shorts/", "body": { "type": "json", "data": "{\"script\":\"Your script here\",\"aspect_ratio\":\"9x16\",\"style\":\"4K realistic\"}" } },
+          "docs": "Convert a text script into a short-form video. Deprecated in favor of Link-to-Video / AI Avatar."
+        },
+        {
+          "info": { "name": "Get an AI short video.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/ai_shorts/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Poll status/progress of an AI short job."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Custom Templates (modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a video from a custom template.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/custom_templates/", "body": { "type": "json", "data": "{}" } },
+          "docs": "Generate a video from a customizable template. Modeled path - verify against docs.creatify.ai."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Product-to-Video (modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create a video ad from product images.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/product_to_video/", "body": { "type": "json", "data": "{}" } },
+          "docs": "Generate a studio-quality video ad from product images. Modeled path - verify against docs.creatify.ai."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Text-to-Speech", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Generate speech from text.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/text_to_speech/", "body": { "type": "json", "data": "{\"script\":\"Hello from Creatify.\",\"accent\":null,\"webhook_url\":null}" } },
+          "docs": "Generate an ultra-realistic voiceover from text (up to 8000 chars). 1 credit per 30 seconds."
+        },
+        {
+          "info": { "name": "Get a text-to-speech job.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/text_to_speech/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The job UUID." }] },
+          "docs": "Poll status/progress of a text-to-speech job."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Personas", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get all available avatars.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/personas/" },
+          "docs": "List the catalog of 1500+ AI avatars/personas."
+        },
+        {
+          "info": { "name": "Get all available avatars (paginated).", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/personas/paginated/" },
+          "docs": "Paginated list of personas."
+        },
+        {
+          "info": { "name": "Get avatar by id.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/personas/:id/", "params": [{ "name": "id", "value": "", "type": "path", "description": "The persona UUID." }] },
+          "docs": "Get a persona by id."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Voices", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get all available voices.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/voices/" },
+          "docs": "List available AI voices and accents."
+        },
+        {
+          "info": { "name": "Get voices (paginated).", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/voices/paginated/" },
+          "docs": "Paginated list of voices."
+        }
+      ]
+    },
+    {
+      "info": { "name": "Music (modeled)", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Get music categories.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/music_categories/" },
+          "docs": "List background-music categories. Modeled path - verify against docs.creatify.ai."
+        },
+        {
+          "info": { "name": "Get musics.", "type": "http" },
+          "http": { "method": "GET", "url": "https://api.creatify.ai/api/musics/" },
+          "docs": "List background-music tracks. Modeled path - verify against docs.creatify.ai."
+        }
+      ]
+    },
+    {
+      "info": { "name": "AI Editing", "type": "folder" },
+      "items": [
+        {
+          "info": { "name": "Create an AI editing job.", "type": "http" },
+          "http": { "method": "POST", "url": "https://api.creatify.ai/api/ai_editing/", "body": { "type": "json", "data": "{}" } },
+          "docs": "Enhance and stylize an existing video with professional templates. Async - poll GET /ai_editing/{id}/."
+        }
+      ]
+    }
+  ]
+}
