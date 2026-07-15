@@ -252,6 +252,8 @@ apis:
   description: Automatically enhance and stylize an existing video with professional
     templates (POST /ai_editing/, GET /ai_editing/{id}/). Async create-then-poll.
 common:
+- type: AgenticAccess
+  url: agentic-access/creatify-agentic-access.yml
 - type: Authentication
   url: authentication/creatify-authentication.yml
 - type: DomainSecurity
