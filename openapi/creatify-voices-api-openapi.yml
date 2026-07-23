@@ -1,0 +1,122 @@
+openapi: 3.0.3
+info:
+  title: Creatify AI Avatar Voices API
+  description: 'The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).
+
+
+    Media generation is asynchronous: a POST creates a job and returns an id with a status ("pending"), and the caller polls GET /{resource}/{id}/ until status is "done" (or "error"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).
+
+
+    Endpoints tagged with x-modeled: true below are inferred from Creatify''s documented product areas plus the platform''s consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.'
+  version: '1.0'
+  contact:
+    name: Creatify
+    url: https://creatify.ai
+servers:
+- url: https://api.creatify.ai/api
+  description: Creatify API
+security:
+- apiId: []
+  apiKey: []
+tags:
+- name: Voices
+  description: Catalog of AI voices and accents.
+paths:
+  /voices/:
+    get:
+      operationId: listVoices
+      tags:
+      - Voices
+      summary: Get all available voices
+      responses:
+        '200':
+          description: A list of voices.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Voice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /voices/paginated/:
+    get:
+      operationId: listVoicesPaginated
+      tags:
+      - Voices
+      summary: Get voices with pagination
+      parameters:
+      - name: page
+        in: query
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: A paginated list of voices.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  count:
+                    type: integer
+                  next:
+                    type: string
+                    nullable: true
+                  previous:
+                    type: string
+                    nullable: true
+                  results:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Voice'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Voice:
+      type: object
+      description: An AI voice / accent.
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        gender:
+          type: string
+        language:
+          type: string
+        accents:
+          type: array
+          items:
+            type: object
+            additionalProperties: true
+        preview_url:
+          type: string
+          format: uri
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  securitySchemes:
+    apiId:
+      type: apiKey
+      in: header
+      name: X-API-ID
+      description: Your unique Creatify API identifier from the in-app API Dashboard.
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Your secret Creatify API key. Keep it server-side.

@@ -1,0 +1,267 @@
+openapi: 3.0.3
+info:
+  title: Creatify AI Avatar API
+  description: 'The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).
+
+
+    Media generation is asynchronous: a POST creates a job and returns an id with a status ("pending"), and the caller polls GET /{resource}/{id}/ until status is "done" (or "error"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).
+
+
+    Endpoints tagged with x-modeled: true below are inferred from Creatify''s documented product areas plus the platform''s consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.'
+  version: '1.0'
+  contact:
+    name: Creatify
+    url: https://creatify.ai
+servers:
+- url: https://api.creatify.ai/api
+  description: Creatify API
+security:
+- apiId: []
+  apiKey: []
+tags:
+- name: AI Avatar
+  description: Lipsync v1/v2 and Aurora avatar video generation.
+paths:
+  /lipsyncs/:
+    post:
+      operationId: createLipsync
+      tags:
+      - AI Avatar
+      summary: Create an AI avatar video (Lipsync v1)
+      description: Convert text or an audio file plus a chosen avatar into a single-scene talking-head video. Async - poll GET /lipsyncs/{id}/.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                creator:
+                  type: string
+                  description: The persona/avatar id.
+                accent:
+                  type: string
+                  description: The voice/accent id.
+                aspect_ratio:
+                  type: string
+                  example: 9x16
+                webhook_url:
+                  type: string
+                  format: uri
+                  nullable: true
+      responses:
+        '200':
+          description: The created avatar video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /lipsyncs/preview/:
+    post:
+      operationId: previewLipsync
+      tags:
+      - AI Avatar
+      summary: Preview an AI avatar video (Lipsync v1)
+      description: Generate a low-cost preview of an avatar video before full render.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: true
+      responses:
+        '200':
+          description: The preview job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /lipsyncs/{id}/:
+    get:
+      operationId: getLipsync
+      tags:
+      - AI Avatar
+      summary: Get an AI avatar video (Lipsync v1)
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The avatar video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /lipsyncs/{id}/render/:
+    post:
+      operationId: renderLipsync
+      tags:
+      - AI Avatar
+      summary: Render an AI avatar video (Lipsync v1)
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The rendering avatar video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /lipsyncs_v2/:
+    post:
+      operationId: createLipsyncV2
+      tags:
+      - AI Avatar
+      summary: Create a multi-scene AI avatar video (Lipsync v2)
+      description: Generate a video with multiple scenes, each with its own character, voice, background, and captions. Async - poll GET /lipsyncs_v2/{id}/.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                video_inputs:
+                  type: array
+                  description: Array of scene objects.
+                  items:
+                    type: object
+                    additionalProperties: true
+                aspect_ratio:
+                  type: string
+                  example: 9x16
+                model_version:
+                  type: string
+                  example: aurora_v1_fast
+                webhook_url:
+                  type: string
+                  format: uri
+                  nullable: true
+      responses:
+        '200':
+          description: The created multi-scene avatar video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /lipsyncs_v2/{id}/:
+    get:
+      operationId: getLipsyncV2
+      tags:
+      - AI Avatar
+      summary: Get a multi-scene AI avatar video (Lipsync v2)
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The multi-scene avatar video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    VideoJob:
+      type: object
+      description: A generic asynchronous video-generation job.
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - in_queue
+          - running
+          - done
+          - error
+        progress:
+          type: string
+        failed_reason:
+          type: string
+          nullable: true
+        credits_used:
+          type: number
+        duration:
+          type: integer
+        video_output:
+          type: string
+          format: uri
+          nullable: true
+        video_thumbnail:
+          type: string
+          format: uri
+          nullable: true
+        output:
+          type: string
+          format: uri
+          nullable: true
+        aspect_ratio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    apiId:
+      type: apiKey
+      in: header
+      name: X-API-ID
+      description: Your unique Creatify API identifier from the in-app API Dashboard.
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Your secret Creatify API key. Keep it server-side.

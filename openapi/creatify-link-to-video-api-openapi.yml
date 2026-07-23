@@ -1,0 +1,264 @@
+openapi: 3.0.3
+info:
+  title: Creatify AI Avatar Link-to-Video API
+  description: 'The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).
+
+
+    Media generation is asynchronous: a POST creates a job and returns an id with a status ("pending"), and the caller polls GET /{resource}/{id}/ until status is "done" (or "error"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).
+
+
+    Endpoints tagged with x-modeled: true below are inferred from Creatify''s documented product areas plus the platform''s consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.'
+  version: '1.0'
+  contact:
+    name: Creatify
+    url: https://creatify.ai
+servers:
+- url: https://api.creatify.ai/api
+  description: Creatify API
+security:
+- apiId: []
+  apiKey: []
+tags:
+- name: Link-to-Video
+  description: Turn a URL into a short-form video ad.
+paths:
+  /links/:
+    post:
+      operationId: createLink
+      tags:
+      - Link-to-Video
+      summary: Create a link from a URL
+      description: Create a Creatify link by scraping a product or landing-page URL. The resulting link id is used to generate a link-to-video job.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - url
+              properties:
+                url:
+                  type: string
+                  format: uri
+                  description: The product or landing-page URL to convert.
+      responses:
+        '200':
+          description: The created link.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Link'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /link_to_videos/:
+    get:
+      operationId: listLinkToVideos
+      tags:
+      - Link-to-Video
+      summary: List link-to-video jobs
+      responses:
+        '200':
+          description: A list of link-to-video jobs.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createLinkToVideo
+      tags:
+      - Link-to-Video
+      summary: Create a link-to-video job
+      description: Create a video-generation job from a link. Returns immediately with a job id and status; poll GET /link_to_videos/{id}/ for progress.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                link:
+                  type: string
+                  description: The link id to build the video from.
+                target_platform:
+                  type: string
+                  example: Facebook
+                language:
+                  type: string
+                  example: en
+                video_length:
+                  type: integer
+                  example: 30
+                aspect_ratio:
+                  type: string
+                  example: 9x16
+                script_style:
+                  type: string
+                visual_style:
+                  type: string
+                webhook_url:
+                  type: string
+                  format: uri
+                  nullable: true
+      responses:
+        '200':
+          description: The created link-to-video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /link_to_videos/{id}/:
+    get:
+      operationId: getLinkToVideo
+      tags:
+      - Link-to-Video
+      summary: Get a link-to-video job
+      description: Poll the status and progress of a link-to-video job.
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The link-to-video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /link_to_videos/{id}/render/:
+    post:
+      operationId: renderLinkToVideo
+      tags:
+      - Link-to-Video
+      summary: Render a link-to-video job
+      description: Render a previewed link-to-video job to final video. Billed 4 credits per 30 seconds (Standard 5 credits/30s; Aurora 1 credit/second; Aurora fast 0.5 credit/second).
+      parameters:
+      - $ref: '#/components/parameters/Id'
+      responses:
+        '200':
+          description: The rendering link-to-video job.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VideoJob'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    VideoJob:
+      type: object
+      description: A generic asynchronous video-generation job.
+      properties:
+        id:
+          type: string
+          format: uuid
+        status:
+          type: string
+          enum:
+          - pending
+          - in_queue
+          - running
+          - done
+          - error
+        progress:
+          type: string
+        failed_reason:
+          type: string
+          nullable: true
+        credits_used:
+          type: number
+        duration:
+          type: integer
+        video_output:
+          type: string
+          format: uri
+          nullable: true
+        video_thumbnail:
+          type: string
+          format: uri
+          nullable: true
+        output:
+          type: string
+          format: uri
+          nullable: true
+        aspect_ratio:
+          type: string
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        description:
+          type: string
+        image_urls:
+          type: array
+          items:
+            type: string
+            format: uri
+        video_urls:
+          type: array
+          items:
+            type: string
+            format: uri
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
+  securitySchemes:
+    apiId:
+      type: apiKey
+      in: header
+      name: X-API-ID
+      description: Your unique Creatify API identifier from the in-app API Dashboard.
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Your secret Creatify API key. Keep it server-side.
