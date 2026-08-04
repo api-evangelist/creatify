@@ -1,0 +1,32 @@
+{
+  "provider": "creatify",
+  "sources": [
+    "creatify-ai-avatar-api-openapi.yml",
+    "creatify-ai-editing-api-openapi.yml",
+    "creatify-ai-shorts-api-openapi.yml",
+    "creatify-custom-templates-api-openapi.yml",
+    "creatify-link-to-video-api-openapi.yml",
+    "creatify-music-api-openapi.yml",
+    "creatify-personas-api-openapi.yml",
+    "creatify-product-to-video-api-openapi.yml",
+    "creatify-text-to-speech-api-openapi.yml",
+    "creatify-voices-api-openapi.yml"
+  ],
+  "outputs": [
+    "creatify-ai-avatar-api-openapi.yml",
+    "creatify-ai-editing-api-openapi.yml",
+    "creatify-ai-shorts-api-openapi.yml",
+    "creatify-custom-templates-api-openapi.yml",
+    "creatify-link-to-video-api-openapi.yml",
+    "creatify-music-api-openapi.yml",
+    "creatify-personas-api-openapi.yml",
+    "creatify-product-to-video-api-openapi.yml",
+    "creatify-text-to-speech-api-openapi.yml",
+    "creatify-voices-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
