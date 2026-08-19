@@ -35,7 +35,7 @@ tags:
 - AI Avatar
 created: '2026-07-11'
 modified: '2026-07-11'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: creatify:creatify-ai-avatar-api
   name: Creatify AI Avatar API
