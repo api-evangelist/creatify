@@ -1,0 +1,97 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar AI Shorts API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Shorts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List AI short videos",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/ai_shorts/"
+          },
+          "docs": "List AI short videos"
+        },
+        {
+          "info": {
+            "name": "Create an AI short video",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/ai_shorts/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert a text script into a short-form video. Billed 5 credits. Note - documented by Creatify as deprecated in favor of Link-to-Video and AI Avatar."
+        },
+        {
+          "info": {
+            "name": "Get an AI short video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/ai_shorts/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get an AI short video"
+        },
+        {
+          "info": {
+            "name": "List inspiration jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/inspiration_jobs/"
+          },
+          "docs": "List inspiration jobs"
+        },
+        {
+          "info": {
+            "name": "Create an inspiration job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/inspiration_jobs/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an inspiration job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

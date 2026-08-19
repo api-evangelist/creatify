@@ -1,0 +1,795 @@
+{
+  "item": [
+    {
+      "id": "b1ff4152-28b1-41bf-b54c-044460aa7dd9",
+      "name": "AI Shorts",
+      "description": {
+        "content": "Convert a text script into a short-form video (deprecated).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4763669-b75c-46c6-9690-b15195211a06",
+          "name": "Create an AI short video",
+          "request": {
+            "name": "Create an AI short video",
+            "description": {
+              "content": "Convert a text script into a short-form video. Billed 5 credits. Note - documented by Creatify as deprecated in favor of Link-to-Video and AI Avatar.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ai_shorts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"script\": \"<string>\",\n  \"aspect_ratio\": \"<string>\",\n  \"style\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6fc99de3-c343-4d27-a396-bfabc3b33536",
+              "name": "The created AI short job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": \"<string>\",\n  \"aspect_ratio\": \"9x16\",\n  \"style\": \"4K realistic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e78d4d60-5bb2-1ad2-1aee-c7d562bfd769\",\n  \"status\": \"done\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 5314.885873464298,\n  \"duration\": 2165,\n  \"video_output\": \"http://rOLssuBYtutSFducyfiUDhwwmY.hbf1rkWvf,8s68WZKGuZc5r\",\n  \"video_thumbnail\": \"http://MhOQPRs.dlulu4.BrVQ-jlIUPFdi8RIaq5ccly9J4aorw3gsJlgXSj4jl\",\n  \"output\": \"http://CMsiT.chcokXQkFZCT\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"1987-12-03T11:24:38.650Z\",\n  \"updated_at\": \"1975-05-26T05:33:20.217Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73e82665-4bf8-45d7-a2a0-3a48bdd893a8",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"script\": \"<string>\",\n  \"aspect_ratio\": \"9x16\",\n  \"style\": \"4K realistic\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "936b34bc-909f-4396-9761-8ae0541e75b7",
+          "name": "List AI short videos",
+          "request": {
+            "name": "List AI short videos",
+            "description": {},
+            "url": {
+              "path": [
+                "ai_shorts",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "60c2a83c-f02c-4463-915b-5bb63d98810c",
+              "name": "A list of AI short jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"979867c5-aa72-ec50-3af2-bb57325e3e2c\",\n    \"status\": \"error\",\n    \"progress\": \"string\",\n    \"failed_reason\": \"string\",\n    \"credits_used\": 6640.968047044023,\n    \"duration\": 5810,\n    \"video_output\": \"https://kFntALQlArBNlhpJIooLqtxtFZZivfxAa.izBv-r2w2eNA-NZYC\",\n    \"video_thumbnail\": \"http://ulRrraUNByocaFjXzQImEnNKcCIGWHwTJ.krjwe40AfTpUpP-mZdprl2\",\n    \"output\": \"https://M.edlnHPMQeiJYxeLiP99txbk-0AfGCScH,tAP5em2CXXr,VZVrihzwecovSywfnkviS8,RUo7\",\n    \"aspect_ratio\": \"string\",\n    \"created_at\": \"1969-03-17T10:38:50.396Z\",\n    \"updated_at\": \"2023-06-03T19:32:21.429Z\"\n  },\n  {\n    \"id\": \"4d0bb9ec-3229-1028-5dfc-6db7fae65446\",\n    \"status\": \"done\",\n    \"progress\": \"string\",\n    \"failed_reason\": \"string\",\n    \"credits_used\": 1379.9106531525217,\n    \"duration\": 8629,\n    \"video_output\": \"http://mjeTwVMb.ymlhmr\",\n    \"video_thumbnail\": \"https://QBiEXXbNVWb.ixpYeMh1y9SzEDIDA9Ga3CN9upWPtTqe+l,qU+WwlFfiLtVt6m4GKvxZb7BzoT+nR2RXtHwN-K60a\",\n    \"output\": \"http://HKRmVTQpCbZQFxaxq.vhzNGm,-Eyz-eNkO1bPNuIoIGQ8quYCsdcktj\",\n    \"aspect_ratio\": \"string\",\n    \"created_at\": \"2025-01-22T17:20:46.981Z\",\n    \"updated_at\": \"1990-08-24T12:55:52.844Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "494ad603-9823-4215-92dd-d63baefcb7ea",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0719b98f-7f7e-4aaf-bf5b-90dae3b69390",
+          "name": "Get an AI short video",
+          "request": {
+            "name": "Get an AI short video",
+            "description": {},
+            "url": {
+              "path": [
+                "ai_shorts",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The UUID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f87b3dee-f08f-4837-ba1b-48c717ab53b6",
+              "name": "The AI short job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"e78d4d60-5bb2-1ad2-1aee-c7d562bfd769\",\n  \"status\": \"done\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 5314.885873464298,\n  \"duration\": 2165,\n  \"video_output\": \"http://rOLssuBYtutSFducyfiUDhwwmY.hbf1rkWvf,8s68WZKGuZc5r\",\n  \"video_thumbnail\": \"http://MhOQPRs.dlulu4.BrVQ-jlIUPFdi8RIaq5ccly9J4aorw3gsJlgXSj4jl\",\n  \"output\": \"http://CMsiT.chcokXQkFZCT\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"1987-12-03T11:24:38.650Z\",\n  \"updated_at\": \"1975-05-26T05:33:20.217Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "445f3e4c-1c25-4a60-b208-49c09c73dce3",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "498f4d9e-f593-41b9-943f-4b6a318dd766",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ai_shorts",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ba79fdf5-4706-42ef-bdda-ae9f2566f1cb",
+          "name": "List inspiration jobs",
+          "request": {
+            "name": "List inspiration jobs",
+            "description": {},
+            "url": {
+              "path": [
+                "inspiration_jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7a93f38d-f52d-4c79-800a-598c44586a6f",
+              "name": "A list of inspiration jobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inspiration_jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": 5975,\n    \"key_1\": \"string\",\n    \"key_2\": 8971\n  },\n  {\n    \"key_0\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2c61fd9-d971-446e-88ee-00a4340ba9e1",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inspiration_jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "81cee3f6-6175-497d-9e1d-6897c9d6e622",
+          "name": "Create an inspiration job",
+          "request": {
+            "name": "Create an inspiration job",
+            "description": {},
+            "url": {
+              "path": [
+                "inspiration_jobs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": false,\n  \"key_1\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9fdc2257-5a41-4d67-b0cc-0e9cd779224f",
+              "name": "The created inspiration job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inspiration_jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 772\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": 772\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "78e9f655-c35d-4a28-a32f-4daf3922e015",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "inspiration_jobs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 772\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.creatify.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "03f54d44-485f-4a01-be4e-d0747b4625ce",
+    "name": "Creatify AI Avatar AI Shorts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).\n\nMedia generation is asynchronous: a POST creates a job and returns an id with a status (\"pending\"), and the caller polls GET /{resource}/{id}/ until status is \"done\" (or \"error\"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).\n\nEndpoints tagged with x-modeled: true below are inferred from Creatify's documented product areas plus the platform's consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.\n\nContact Support:\n Name: Creatify",
+      "type": "text/plain"
+    }
+  }
+}

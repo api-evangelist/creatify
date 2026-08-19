@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar AI Editing API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Editing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an AI editing job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/ai_editing/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Enhance and stylize an existing video with professional templates. Async - poll GET /ai_editing/{id}/."
+        },
+        {
+          "info": {
+            "name": "Get an AI editing job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/ai_editing/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get an AI editing job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

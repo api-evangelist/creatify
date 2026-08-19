@@ -1,0 +1,514 @@
+{
+  "item": [
+    {
+      "id": "4859b211-02b5-41bd-8408-21a3f479502d",
+      "name": "Personas",
+      "description": {
+        "content": "Catalog of 1500+ AI avatars/personas.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5ba97199-c471-4f7d-8cd2-64f6e0e3cbb8",
+          "name": "Get all available avatars",
+          "request": {
+            "name": "Get all available avatars",
+            "description": {
+              "content": "List the catalog of 1500+ realistic AI avatars/personas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "personas",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a52eb3fb-920d-4264-b11e-0fb9ab1d865b",
+              "name": "A list of personas.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"65f97c0c-858f-5b0b-6998-081ad66a8cef\",\n    \"creator_name\": \"string\",\n    \"gender\": \"string\",\n    \"age_range\": \"string\",\n    \"style\": \"string\",\n    \"preview_image_1_1\": \"http://jkF.yccjhRQn\",\n    \"preview_video_1_1\": \"http://JIBKIxgyww.chxOGRNvlM1OVlfWtiBGGuST6P9o\",\n    \"is_active\": false\n  },\n  {\n    \"id\": \"c0863e80-549a-2a78-0ba0-9e8b3e07cb74\",\n    \"creator_name\": \"string\",\n    \"gender\": \"string\",\n    \"age_range\": \"string\",\n    \"style\": \"string\",\n    \"preview_image_1_1\": \"https://r.auJsfe1lqrxazKkUZZOu2O-UFKdHSjh0TBe2oOm1Xz\",\n    \"preview_video_1_1\": \"https://FbhVksqY.iwkzpZe1Tipj3FBd17gouyQnuEdjGPegCnaW+MvmT0wFkHd7\",\n    \"is_active\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f6768256-7303-4cb6-9662-622fefecefc5",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9bb2f556-254c-4834-9122-0ba84345fb6e",
+          "name": "Get all available avatars with pagination",
+          "request": {
+            "name": "Get all available avatars with pagination",
+            "description": {},
+            "url": {
+              "path": [
+                "personas",
+                "paginated",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca436cc7-44b5-4ba2-9265-137056442b0f",
+              "name": "A paginated list of personas.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    "paginated",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 2492,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"id\": \"e1e71215-17b2-bfb8-d334-2c01d8d82970\",\n      \"creator_name\": \"string\",\n      \"gender\": \"string\",\n      \"age_range\": \"string\",\n      \"style\": \"string\",\n      \"preview_image_1_1\": \"https://qxHpCZJMxddaHGUBUeh.raIsvI5Q,0wUrKt5Y.f3-hL-lMxXDZ6bJjLb9ZKjdISgmeY+1Yt1aLW8iXilZ8\",\n      \"preview_video_1_1\": \"http://FGVkOrrsixk.hpxjp3DvyjKx5seDusdnMK99l+EF6T+Vk\",\n      \"is_active\": true\n    },\n    {\n      \"id\": \"a9792401-61d6-c80b-4aad-e7490e17264c\",\n      \"creator_name\": \"string\",\n      \"gender\": \"string\",\n      \"age_range\": \"string\",\n      \"style\": \"string\",\n      \"preview_image_1_1\": \"https://tUvxQhGyGDClPHGfZCHsWYgIpBV.owDZoIOYBD2Ia,g+5ign+JOQR+hl1DIBulNR6iEZu.nSlXTL.5zVYqdVGH\",\n      \"preview_video_1_1\": \"http://qzkkVAsjFNynmHXFKN.ltyswJ7hfzM2iokWp.yB-GUCrGkoNqiQ+pSnTNkNHvL95yi3Vi4+0zJc2tPhCD2f\",\n      \"is_active\": false\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ccf9268b-f857-4019-9792-2703e208f5fb",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    "paginated",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e1f471bc-2528-4038-ae08-f101fcfcbbe9",
+          "name": "Get avatar by id",
+          "request": {
+            "name": "Get avatar by id",
+            "description": {},
+            "url": {
+              "path": [
+                "personas",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The UUID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "16bc899c-5992-4f3d-af2d-eacdf47feece",
+              "name": "The persona.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2cb540a5-0bb0-67b8-472c-96458c03d03a\",\n  \"creator_name\": \"string\",\n  \"gender\": \"string\",\n  \"age_range\": \"string\",\n  \"style\": \"string\",\n  \"preview_image_1_1\": \"http://YSiiqkmn.ypadHp7\",\n  \"preview_video_1_1\": \"https://RPAx.msvlTibugew-M2VQBznswOjVsfnqMncCC2tLy\",\n  \"is_active\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ee38d61a-eb24-48fe-8dd9-af2af0702f82",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b17fc65b-0700-4d5c-8230-891ddf64b55e",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "personas",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.creatify.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "7fbf1d5f-e3c3-4648-9b1a-5cfdba2ba02c",
+    "name": "Creatify AI Avatar Personas API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).\n\nMedia generation is asynchronous: a POST creates a job and returns an id with a status (\"pending\"), and the caller polls GET /{resource}/{id}/ until status is \"done\" (or \"error\"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).\n\nEndpoints tagged with x-modeled: true below are inferred from Creatify's documented product areas plus the platform's consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.\n\nContact Support:\n Name: Creatify",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Custom Templates API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Custom Templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a video from a custom template",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/custom_templates/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a video from a customizable template by supplying template variables. Modeled path - verify against docs.creatify.ai."
+        },
+        {
+          "info": {
+            "name": "Get a custom template video",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/custom_templates/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get a custom template video"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

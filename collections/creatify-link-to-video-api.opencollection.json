@@ -1,0 +1,105 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Link-to-Video API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Link-to-Video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a link from a URL",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/links/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a Creatify link by scraping a product or landing-page URL. The resulting link id is used to generate a link-to-video job."
+        },
+        {
+          "info": {
+            "name": "List link-to-video jobs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/link_to_videos/"
+          },
+          "docs": "List link-to-video jobs"
+        },
+        {
+          "info": {
+            "name": "Create a link-to-video job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/link_to_videos/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a video-generation job from a link. Returns immediately with a job id and status; poll GET /link_to_videos/{id}/ for progress."
+        },
+        {
+          "info": {
+            "name": "Get a link-to-video job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/link_to_videos/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Poll the status and progress of a link-to-video job."
+        },
+        {
+          "info": {
+            "name": "Render a link-to-video job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/link_to_videos/:id/render/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Render a previewed link-to-video job to final video. Billed 4 credits per 30 seconds (Standard 5 credits/30s; Aurora 1 credit/second; Aurora fast 0.5 credit/second)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

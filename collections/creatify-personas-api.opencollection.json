@@ -1,0 +1,74 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Personas API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Personas",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get all available avatars",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/personas/"
+          },
+          "docs": "List the catalog of 1500+ realistic AI avatars/personas."
+        },
+        {
+          "info": {
+            "name": "Get all available avatars with pagination",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/personas/paginated/",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Get all available avatars with pagination"
+        },
+        {
+          "info": {
+            "name": "Get avatar by id",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/personas/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get avatar by id"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

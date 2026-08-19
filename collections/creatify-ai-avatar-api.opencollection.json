@@ -1,0 +1,128 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "AI Avatar",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create an AI avatar video (Lipsync v1)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/lipsyncs/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Convert text or an audio file plus a chosen avatar into a single-scene talking-head video. Async - poll GET /lipsyncs/{id}/."
+        },
+        {
+          "info": {
+            "name": "Preview an AI avatar video (Lipsync v1)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/lipsyncs/preview/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a low-cost preview of an avatar video before full render."
+        },
+        {
+          "info": {
+            "name": "Get an AI avatar video (Lipsync v1)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/lipsyncs/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get an AI avatar video (Lipsync v1)"
+        },
+        {
+          "info": {
+            "name": "Render an AI avatar video (Lipsync v1)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/lipsyncs/:id/render/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Render an AI avatar video (Lipsync v1)"
+        },
+        {
+          "info": {
+            "name": "Create a multi-scene AI avatar video (Lipsync v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/lipsyncs_v2/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a video with multiple scenes, each with its own character, voice, background, and captions. Async - poll GET /lipsyncs_v2/{id}/."
+        },
+        {
+          "info": {
+            "name": "Get a multi-scene AI avatar video (Lipsync v2)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/lipsyncs_v2/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get a multi-scene AI avatar video (Lipsync v2)"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

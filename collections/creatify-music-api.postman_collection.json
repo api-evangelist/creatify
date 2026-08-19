@@ -1,0 +1,297 @@
+{
+  "item": [
+    {
+      "id": "41be69dd-b3a4-479c-ac2b-d263b15ecd74",
+      "name": "Music",
+      "description": {
+        "content": "Background-music categories and tracks (modeled).",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1fb4b2c-7946-4360-95ee-61711c6aa6d3",
+          "name": "Get music categories",
+          "request": {
+            "name": "Get music categories",
+            "description": {
+              "content": "List background-music categories. Modeled path - verify against docs.creatify.ai.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "music_categories",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f857a608-5f09-46be-98ed-e98ae9b0d2c4",
+              "name": "A list of music categories.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "music_categories",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 6717,\n    \"key_1\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "421ab1b6-0ac4-444d-ab74-40e01bbbb0e9",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "music_categories",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f470e7ba-9940-468d-8db0-8869e7d7745b",
+          "name": "Get musics",
+          "request": {
+            "name": "Get musics",
+            "description": {
+              "content": "List background-music tracks. Modeled path - verify against docs.creatify.ai.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "musics",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "814cfa46-4755-4089-94b8-bc8d4ae4d5c4",
+              "name": "A list of music tracks.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "musics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key_0\": true\n  },\n  {\n    \"key_0\": 6717,\n    \"key_1\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fc919e64-3326-450c-94b2-37038ebb0514",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "musics",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.creatify.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ec4c48ed-f490-4335-9ccf-bc507056dce7",
+    "name": "Creatify AI Avatar Music API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).\n\nMedia generation is asynchronous: a POST creates a job and returns an id with a status (\"pending\"), and the caller polls GET /{resource}/{id}/ until status is \"done\" (or \"error\"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).\n\nEndpoints tagged with x-modeled: true below are inferred from Creatify's documented product areas plus the platform's consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.\n\nContact Support:\n Name: Creatify",
+      "type": "text/plain"
+    }
+  }
+}

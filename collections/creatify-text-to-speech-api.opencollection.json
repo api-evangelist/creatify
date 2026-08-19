@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Text-to-Speech API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Text-to-Speech",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generate speech from text",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/text_to_speech/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate an ultra-realistic voiceover from text (up to 8000 characters). Billed 1 credit per 30 seconds of audio. Supports a webhook_url for completion notification."
+        },
+        {
+          "info": {
+            "name": "Get a text-to-speech job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/text_to_speech/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get a text-to-speech job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

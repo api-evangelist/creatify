@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "07b6ea21-1961-4e1f-9faa-7a0d666feade",
+      "name": "Voices",
+      "description": {
+        "content": "Catalog of AI voices and accents.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "321fc04d-1e8c-45c2-a8cb-75286d6b0fc5",
+          "name": "Get all available voices",
+          "request": {
+            "name": "Get all available voices",
+            "description": {},
+            "url": {
+              "path": [
+                "voices",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "181ecaa7-bbec-499c-a72d-e20dc8f36d84",
+              "name": "A list of voices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voices",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"a33f2086-36b3-5282-2c0a-3c90e05279f4\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"language\": \"string\",\n    \"accents\": [\n      {\n        \"key_0\": \"string\",\n        \"key_1\": 5482\n      },\n      {\n        \"key_0\": true,\n        \"key_1\": false,\n        \"key_2\": 8125\n      }\n    ],\n    \"preview_url\": \"http://fppWtPvvQWEYpWFzknoWNGliL.hcefZG14lOcmzkt2ZMwoL-pdNPzC3Q0DsOi.AFRe7IK5KLk\"\n  },\n  {\n    \"id\": \"e763fda4-762b-7bc9-8e6f-494d094d1d38\",\n    \"name\": \"string\",\n    \"gender\": \"string\",\n    \"language\": \"string\",\n    \"accents\": [\n      {\n        \"key_0\": true,\n        \"key_1\": 7806.185483720107,\n        \"key_2\": \"string\"\n      },\n      {\n        \"key_0\": \"string\"\n      }\n    ],\n    \"preview_url\": \"http://HroinMWpcsFWWJIKudqYXkNLZNwwo.pcH1MXgnVyTds,EMRFTr9Ict3RoXXsSKqRgdpqZWP.W5ajLDeQPnLUZ.mCX0enXTOmSk1.2hyX\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e9c33b0d-8267-4ea9-ae61-1b39c6fd64d7",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voices",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dc176db8-c4c5-41bc-b59a-d39ede74a599",
+          "name": "Get voices with pagination",
+          "request": {
+            "name": "Get voices with pagination",
+            "description": {},
+            "url": {
+              "path": [
+                "voices",
+                "paginated",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "<integer>"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a01dfba3-a19c-49dc-9267-0791d04f676d",
+              "name": "A paginated list of voices.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voices",
+                    "paginated",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"count\": 2846,\n  \"next\": \"string\",\n  \"previous\": \"string\",\n  \"results\": [\n    {\n      \"id\": \"36c4cb84-4e8e-f3ae-1169-ff8d6851675e\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"language\": \"string\",\n      \"accents\": [\n        {\n          \"key_0\": 8200.457661477607,\n          \"key_1\": 7843\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": \"string\",\n          \"key_2\": true,\n          \"key_3\": 5633\n        }\n      ],\n      \"preview_url\": \"http://OkJhvXv.zictLlIYapGpWMr9AtS,uH-YbFhkctAxiH58dyv5J-qEIKDvSx,A9W9ZlaZng82zNNIM1\"\n    },\n    {\n      \"id\": \"7d896193-18df-46bd-2cff-e033ba4237a8\",\n      \"name\": \"string\",\n      \"gender\": \"string\",\n      \"language\": \"string\",\n      \"accents\": [\n        {\n          \"key_0\": true\n        },\n        {\n          \"key_0\": \"string\",\n          \"key_1\": 4652\n        }\n      ],\n      \"preview_url\": \"https://XoVUGtTnJksiWYdwClqspjXjKcXSjluTx.aowcvLchjG7PW,nBd0KFdN0,RgAADfyUOByOCvxG-zC\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9725d93c-6a3d-46c0-8aa8-5bd34898ba17",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "voices",
+                    "paginated",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.creatify.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "780fdabb-e9af-4fd3-9c8f-29fd6527f2cc",
+    "name": "Creatify AI Avatar Voices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).\n\nMedia generation is asynchronous: a POST creates a job and returns an id with a status (\"pending\"), and the caller polls GET /{resource}/{id}/ until status is \"done\" (or \"error\"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).\n\nEndpoints tagged with x-modeled: true below are inferred from Creatify's documented product areas plus the platform's consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.\n\nContact Support:\n Name: Creatify",
+      "type": "text/plain"
+    }
+  }
+}

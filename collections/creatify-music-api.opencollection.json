@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Music API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Music",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get music categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/music_categories/"
+          },
+          "docs": "List background-music categories. Modeled path - verify against docs.creatify.ai."
+        },
+        {
+          "info": {
+            "name": "Get musics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/musics/"
+          },
+          "docs": "List background-music tracks. Modeled path - verify against docs.creatify.ai."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

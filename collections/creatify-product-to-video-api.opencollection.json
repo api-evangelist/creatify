@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Creatify AI Avatar Product-to-Video API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-ID",
+      "value": "{{X-API-ID}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Product-to-Video",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a video ad from product images",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.creatify.ai/api/product_to_video/",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a studio-quality video ad from product images. Billed per image and per 30 seconds of footage. Modeled path - verify against docs.creatify.ai."
+        },
+        {
+          "info": {
+            "name": "Get a product-to-video job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.creatify.ai/api/product_to_video/:id/",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "The UUID of the resource."
+              }
+            ]
+          },
+          "docs": "Get a product-to-video job"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

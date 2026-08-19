@@ -1,0 +1,1118 @@
+{
+  "item": [
+    {
+      "id": "82a37407-7cda-46fb-9689-b4f164d48edd",
+      "name": "AI Avatar",
+      "description": {
+        "content": "Lipsync v1/v2 and Aurora avatar video generation.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "328c3048-e08b-401d-86ae-1d792b9bc49e",
+          "name": "Create an AI avatar video (Lipsync v1)",
+          "request": {
+            "name": "Create an AI avatar video (Lipsync v1)",
+            "description": {
+              "content": "Convert text or an audio file plus a chosen avatar into a single-scene talking-head video. Async - poll GET /lipsyncs/{id}/.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lipsyncs",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"text\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"accent\": \"<string>\",\n  \"aspect_ratio\": \"<string>\",\n  \"webhook_url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4fc830e0-d0d2-412e-b17e-84feb03ba3c8",
+              "name": "The created avatar video job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"accent\": \"<string>\",\n  \"aspect_ratio\": \"9x16\",\n  \"webhook_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "463aeef0-3e46-41a2-a28e-6e608a2b047f",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"text\": \"<string>\",\n  \"creator\": \"<string>\",\n  \"accent\": \"<string>\",\n  \"aspect_ratio\": \"9x16\",\n  \"webhook_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "16dbc7a2-7805-48a8-be40-f2539148c63d",
+          "name": "Preview an AI avatar video (Lipsync v1)",
+          "request": {
+            "name": "Preview an AI avatar video (Lipsync v1)",
+            "description": {
+              "content": "Generate a low-cost preview of an avatar video before full render.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lipsyncs",
+                "preview",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": false,\n  \"key_1\": 3119\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ed662b9d-0a1d-421f-a386-e70cdff8495e",
+              "name": "The preview job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    "preview",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 8781.881183680376\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5bb7cb5e-08dc-4e94-8500-1c3247df2eb3",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    "preview",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": 8781.881183680376\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e80eecc-ff4b-4c8a-b9ff-3df97e6473bd",
+          "name": "Get an AI avatar video (Lipsync v1)",
+          "request": {
+            "name": "Get an AI avatar video (Lipsync v1)",
+            "description": {},
+            "url": {
+              "path": [
+                "lipsyncs",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The UUID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bfd6ca90-ccaa-44ec-a7cc-49c12cce70a5",
+              "name": "The avatar video job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3d9af008-b12b-4f2e-b91e-b75d7768dfc6",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "607a53a9-5699-44cc-8b99-0184bd01ad3d",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd1eb52b-cb26-4d33-a272-498118a95f61",
+          "name": "Render an AI avatar video (Lipsync v1)",
+          "request": {
+            "name": "Render an AI avatar video (Lipsync v1)",
+            "description": {},
+            "url": {
+              "path": [
+                "lipsyncs",
+                ":id",
+                "render",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The UUID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "64c416aa-a29a-4468-8984-b714e2dcc5e4",
+              "name": "The rendering avatar video job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    "render",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2de8aed-1433-4837-814f-5745b16dbcc6",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    "render",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "00350482-acb8-4688-af94-9744ad6df497",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs",
+                    ":id",
+                    "render",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87b64346-1486-4783-aecc-d4a7c6131ba0",
+          "name": "Create a multi-scene AI avatar video (Lipsync v2)",
+          "request": {
+            "name": "Create a multi-scene AI avatar video (Lipsync v2)",
+            "description": {
+              "content": "Generate a video with multiple scenes, each with its own character, voice, background, and captions. Async - poll GET /lipsyncs_v2/{id}/.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "lipsyncs_v2",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"video_inputs\": [\n    {\n      \"key_0\": \"string\",\n      \"key_1\": 9034.491698243171\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": true\n    }\n  ],\n  \"aspect_ratio\": \"<string>\",\n  \"model_version\": \"<string>\",\n  \"webhook_url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "54158b52-c4bf-4ebe-9caa-8882e0969405",
+              "name": "The created multi-scene avatar video job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs_v2",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_inputs\": [\n    {\n      \"key_0\": 4554.622122424775\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": false\n    }\n  ],\n  \"aspect_ratio\": \"9x16\",\n  \"model_version\": \"aurora_v1_fast\",\n  \"webhook_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "567ffa1b-eaa8-4e61-a88d-fb22681a346c",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs_v2",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"video_inputs\": [\n    {\n      \"key_0\": 4554.622122424775\n    },\n    {\n      \"key_0\": false,\n      \"key_1\": false\n    }\n  ],\n  \"aspect_ratio\": \"9x16\",\n  \"model_version\": \"aurora_v1_fast\",\n  \"webhook_url\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcb893fa-5894-42e7-9bec-d93544d13b90",
+          "name": "Get a multi-scene AI avatar video (Lipsync v2)",
+          "request": {
+            "name": "Get a multi-scene AI avatar video (Lipsync v2)",
+            "description": {},
+            "url": {
+              "path": [
+                "lipsyncs_v2",
+                ":id",
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "id",
+                  "description": "(Required) The UUID of the resource."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26454c69-7b93-4c4a-aaa1-c9c70b1cbd36",
+              "name": "The multi-scene avatar video job.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs_v2",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"48d817fc-e861-e089-981d-8f31649c58ac\",\n  \"status\": \"error\",\n  \"progress\": \"string\",\n  \"failed_reason\": \"string\",\n  \"credits_used\": 1271.2686976473708,\n  \"duration\": 9844,\n  \"video_output\": \"https://KSo.zqrGJC5Zp5eYZLkxmQzguWaW.ZQq,KXYuY7fNVbjixox1B3iQp\",\n  \"video_thumbnail\": \"https://BDlVfcb.lncI-ibfMqM4yo5cIzrPjuxWmkd\",\n  \"output\": \"http://PdbvgIEOpknVsQT.uxgGYdlANastu6ci8Iu4op+RtqFKwSsOQ0UOvm9FZx9g0poQ3QC4UvgF\",\n  \"aspect_ratio\": \"string\",\n  \"created_at\": \"2008-12-11T20:57:48.182Z\",\n  \"updated_at\": \"2022-04-30T14:01:28.645Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "88ac097a-6f06-432d-b44e-38f010e54b20",
+              "name": "Missing or invalid X-API-ID / X-API-KEY headers.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs_v2",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "913b3c3d-c965-4d7b-8097-258b567dd9d9",
+              "name": "The requested resource was not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "lipsyncs_v2",
+                    ":id",
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "id",
+                      "description": "(Required) The UUID of the resource."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-ID",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"detail\": \"string\",\n  \"code\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.creatify.ai/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-ID"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "75d9ac85-96be-4e20-9900-a012fa5b545e",
+    "name": "Creatify AI Avatar API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).\n\nMedia generation is asynchronous: a POST creates a job and returns an id with a status (\"pending\"), and the caller polls GET /{resource}/{id}/ until status is \"done\" (or \"error\"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).\n\nEndpoints tagged with x-modeled: true below are inferred from Creatify's documented product areas plus the platform's consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.\n\nContact Support:\n Name: Creatify",
+      "type": "text/plain"
+    }
+  }
+}
