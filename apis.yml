@@ -389,6 +389,8 @@ apis:
   humanURL: https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2
   baseURL: https://api.creatify.ai/api
   tags:
+  - Voice
+  tags_raw:
   - Voices
   properties:
   - type: OpenAPI
