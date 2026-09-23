@@ -1,0 +1,1 @@
+{"resource": "https://api.creatify.ai/mcp", "authorization_servers": ["https://api.creatify.ai"], "scopes_supported": ["mcp"], "bearer_methods_supported": ["header"]}

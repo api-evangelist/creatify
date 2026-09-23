@@ -1,13 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Creatify AI Avatar Text-to-Speech API
-  description: 'The Creatify API generates AI avatar and marketing videos programmatically. It turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. All endpoints are REST over HTTPS under https://api.creatify.ai/api and are authenticated with two headers, X-API-ID and X-API-KEY, issued from the in-app API Dashboard at app.creatify.ai (API access requires an active paid subscription).
-
-
-    Media generation is asynchronous: a POST creates a job and returns an id with a status ("pending"), and the caller polls GET /{resource}/{id}/ until status is "done" (or "error"). Some endpoints additionally accept a webhook_url and POST a status update to the caller on completion. There is no WebSocket or SSE surface. Usage is metered in credits (roughly 5 credits per 30 seconds of video and 1 credit per 30 seconds of audio).
-
-
-    Endpoints tagged with x-modeled: true below are inferred from Creatify''s documented product areas plus the platform''s consistent /api/{resource}/ + /api/{resource}/{id}/ convention, because a fully published reference page for the exact path was not available at authoring time. Verify their request/response schemas against docs.creatify.ai.'
+  title: Creatify Text To Speech API
+  description: The Creatify API generates AI avatar and marketing videos programmatically.
   version: '1.0'
   contact:
     name: Creatify
@@ -19,14 +13,14 @@ security:
 - apiId: []
   apiKey: []
 tags:
-- name: Text-to-Speech
+- name: Text To Speech
   description: Generate voiceovers from text.
 paths:
   /text_to_speech/:
     post:
       operationId: createTextToSpeech
       tags:
-      - Text-to-Speech
+      - Text To Speech
       summary: Generate speech from text
       description: Generate an ultra-realistic voiceover from text (up to 8000 characters). Billed 1 credit per 30 seconds of audio. Supports a webhook_url for completion notification.
       requestBody:
@@ -43,15 +37,17 @@ paths:
                   maxLength: 8000
                   description: Text to be converted to speech.
                 accent:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: uuid
-                  nullable: true
                   description: Accent/voice to be used for the speech.
                 webhook_url:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   format: uri
                   maxLength: 200
-                  nullable: true
                   description: Webhook URL for status updates.
       responses:
         '200':
@@ -66,7 +62,7 @@ paths:
     get:
       operationId: getTextToSpeech
       tags:
-      - Text-to-Speech
+      - Text To Speech
       summary: Get a text-to-speech job
       parameters:
       - $ref: '#/components/parameters/Id'
@@ -82,15 +78,24 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
   responses:
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
       content:
         application/json:
           schema:
@@ -118,31 +123,24 @@ components:
           - done
           - error
         output:
-          type: string
+          type:
+          - string
+          - 'null'
           format: uri
-          nullable: true
         credits_used:
           type: number
         duration:
           type: integer
         failed_reason:
-          type: string
-          nullable: true
+          type:
+          - string
+          - 'null'
         created_at:
           type: string
           format: date-time
         updated_at:
           type: string
           format: date-time
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The UUID of the resource.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     apiId:
       type: apiKey

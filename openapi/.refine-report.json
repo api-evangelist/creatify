@@ -1,16 +1,7 @@
 {
   "provider": "creatify",
   "sources": [
-    "creatify-ai-avatar-api-openapi.yml",
-    "creatify-ai-editing-api-openapi.yml",
-    "creatify-ai-shorts-api-openapi.yml",
-    "creatify-custom-templates-api-openapi.yml",
-    "creatify-link-to-video-api-openapi.yml",
-    "creatify-music-api-openapi.yml",
-    "creatify-personas-api-openapi.yml",
-    "creatify-product-to-video-api-openapi.yml",
-    "creatify-text-to-speech-api-openapi.yml",
-    "creatify-voices-api-openapi.yml"
+    "_original/creatify-openapi.yml"
   ],
   "outputs": [
     "creatify-ai-avatar-api-openapi.yml",
@@ -27,6 +18,21 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "creatify-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "creatify-ai-avatar-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-ai-editing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-ai-shorts-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-custom-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-link-to-video-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-music-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-personas-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-product-to-video-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-text-to-speech-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "creatify-voices-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
