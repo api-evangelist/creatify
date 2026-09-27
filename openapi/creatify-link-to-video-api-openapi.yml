@@ -149,16 +149,50 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The UUID of the resource.
-      schema:
-        type: string
-        format: uuid
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        description:
+          type: string
+        image_urls:
+          type: array
+          items:
+            type: string
+            format: uri
+        video_urls:
+          type: array
+          items:
+            type: string
+            format: uri
     VideoJob:
       type: object
       description: A generic asynchronous video-generation job.
@@ -207,49 +241,15 @@ components:
         updated_at:
           type: string
           format: date-time
-    Link:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        url:
-          type: string
-          format: uri
-        title:
-          type: string
-        description:
-          type: string
-        image_urls:
-          type: array
-          items:
-            type: string
-            format: uri
-        video_urls:
-          type: array
-          items:
-            type: string
-            format: uri
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     apiId:
       type: apiKey

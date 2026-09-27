@@ -176,16 +176,27 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The UUID of the resource.
-      schema:
-        type: string
-        format: uuid
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    NotFound:
+      description: The requested resource was not found.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
     VideoJob:
       type: object
       description: A generic asynchronous video-generation job.
@@ -234,26 +245,15 @@ components:
         updated_at:
           type: string
           format: date-time
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
-  responses:
-    NotFound:
-      description: The requested resource was not found.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
   securitySchemes:
     apiId:
       type: apiKey
