@@ -60,15 +60,24 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    Id:
+      name: id
+      in: path
+      required: true
+      description: The UUID of the resource.
+      schema:
+        type: string
+        format: uuid
   responses:
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
       content:
         application/json:
           schema:
@@ -129,15 +138,6 @@ components:
         updated_at:
           type: string
           format: date-time
-  parameters:
-    Id:
-      name: id
-      in: path
-      required: true
-      description: The UUID of the resource.
-      schema:
-        type: string
-        format: uuid
   securitySchemes:
     apiId:
       type: apiKey

@@ -70,13 +70,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
     Voice:
       type: object
       description: An AI voice / accent.
@@ -98,6 +91,13 @@ components:
         preview_url:
           type: string
           format: uri
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
   responses:
     Unauthorized:
       description: Missing or invalid X-API-ID / X-API-KEY headers.
