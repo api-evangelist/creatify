@@ -150,6 +150,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
     Link:
       type: object
       properties:
@@ -173,13 +180,6 @@ components:
           items:
             type: string
             format: uri
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
     VideoJob:
       type: object
       description: A generic asynchronous video-generation job.

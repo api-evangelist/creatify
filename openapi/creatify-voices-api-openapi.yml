@@ -69,6 +69,13 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     Voice:
       type: object
@@ -98,13 +105,6 @@ components:
           type: string
         code:
           type: string
-  responses:
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     apiId:
       type: apiKey
