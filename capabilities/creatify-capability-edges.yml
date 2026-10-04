@@ -1,0 +1,58 @@
+slug: creatify
+provider: Creatify
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 4
+edges:
+- tag: AI Avatar
+  spec_file: creatify-ai-avatar-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: POST /lipsyncs/ createLipsync 'Create an AI avatar video (Lipsync v1)'; vendor 'turns product
+    URLs, scripts, images, and text into short-form video ads'
+  reason: Operations generate marketing/ad video assets narrated by AI avatars — i.e. marketing content
+    production, which sits under Content Marketing Management. Not an IT or product-engineering capability;
+    the artefact produced is marketing creative. Confidence held at 0.7 because the sub-capability choice
+    (content production vs. digital/demand-gen) is somewhat arguable.
+- tag: AI Shorts
+  spec_file: creatify-ai-shorts-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: POST /ai_shorts/ createAiShort 'Create an AI short video'; POST /inspiration_jobs/ 'Create
+    an inspiration job'
+  reason: Creates short-form video creative plus ideation ('inspiration') jobs for it — editorial/creative
+    production of marketing content. Not product engineering; the output is campaign creative.
+- tag: Link-to-Video
+  spec_file: creatify-link-to-video-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: POST /link_to_videos/ createLinkToVideo 'Create a link-to-video job'; POST /links/ 'Create
+    a link from a URL'
+  reason: Turns a product URL into a rendered video ad — automated production of marketing creative, i.e.
+    content marketing production. The link object is only the input source, not a business entity of its
+    own.
+- tag: Product-to-Video
+  spec_file: creatify-product-to-video-api-openapi.yml
+  capability_id: BC-400.70
+  capability_id_l1: BC-400
+  capability_name: Content Marketing Management
+  confidence: 0.7
+  evidence: POST /product_to_video/ createProductToVideo 'Create a video ad from product images'
+  reason: Explicitly creates a video ad from product imagery — production of marketing advertising creative.
+    Maps to content marketing production rather than any product lifecycle capability, since the product
+    is only the subject matter of the ad.

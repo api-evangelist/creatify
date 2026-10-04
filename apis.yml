@@ -426,6 +426,9 @@ apis:
   - type: Documentation
     url: https://docs.creatify.ai/api-documentation/ai-editing/ai-editing
 common:
+- type: CapabilityMap
+  url: capabilities/creatify-capability-edges.yml
+  name: Creatify Business Capability Map
 - type: AgenticAccess
   url: agentic-access/creatify-agentic-access.yml
 - type: Authentication
