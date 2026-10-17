@@ -150,36 +150,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
-    Link:
-      type: object
-      properties:
-        id:
-          type: string
-          format: uuid
-        url:
-          type: string
-          format: uri
-        title:
-          type: string
-        description:
-          type: string
-        image_urls:
-          type: array
-          items:
-            type: string
-            format: uri
-        video_urls:
-          type: array
-          items:
-            type: string
-            format: uri
     VideoJob:
       type: object
       description: A generic asynchronous video-generation job.
@@ -228,6 +198,36 @@ components:
         updated_at:
           type: string
           format: date-time
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
+    Link:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        url:
+          type: string
+          format: uri
+        title:
+          type: string
+        description:
+          type: string
+        image_urls:
+          type: array
+          items:
+            type: string
+            format: uri
+        video_urls:
+          type: array
+          items:
+            type: string
+            format: uri
   parameters:
     Id:
       name: id
@@ -238,14 +238,14 @@ components:
         type: string
         format: uuid
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:

@@ -90,6 +90,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    Error:
+      type: object
+      properties:
+        detail:
+          type: string
+        code:
+          type: string
     Persona:
       type: object
       description: An AI avatar/persona in the catalog.
@@ -113,13 +120,6 @@ components:
           format: uri
         is_active:
           type: boolean
-    Error:
-      type: object
-      properties:
-        detail:
-          type: string
-        code:
-          type: string
   parameters:
     Id:
       name: id
@@ -130,14 +130,14 @@ components:
         type: string
         format: uuid
   responses:
-    NotFound:
-      description: The requested resource was not found.
+    Unauthorized:
+      description: Missing or invalid X-API-ID / X-API-KEY headers.
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-    Unauthorized:
-      description: Missing or invalid X-API-ID / X-API-KEY headers.
+    NotFound:
+      description: The requested resource was not found.
       content:
         application/json:
           schema:
