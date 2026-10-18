@@ -1,0 +1,24 @@
+edges:
+- partner_name: Slack (own)
+  partner: slack
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://slack.com/marketplace/A098B6C8GCC-admax
+  mirror_of: slack/integrations/slack-integration-edges.yml
+  apps:
+  - Admax
+  listing_count: 1
+  detected: '2026-10-18'
+  detected_by: mirror-platform-listings.py
+  category: Slack app
+generated: '2026-10-18'
+method: searched
+source:
+- slack/integrations/slack-integration-edges.yml
+checked:
+- slack/integrations/slack-integration-edges.yml
