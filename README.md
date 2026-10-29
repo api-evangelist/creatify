@@ -1,4 +1,4 @@
-# Creatify (creatify)
+# Creatify
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,255 +64,143 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Creatify is an AI avatar and marketing-video generation platform that turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. The Creatify API (base `https://api.creatify.ai/api`, authenticated with `X-API-ID` / `X-API-KEY` headers) exposes AI Avatar (Lipsync v1/v2 and Aurora image-to-avatar), Link-to-Video, AI Shorts and Custom Template video generation, Text-to-Speech and voice cloning, a 1500+ Persona/avatar catalog, a voice catalog, and a music library. Generation is asynchronous - create a job, then poll the job by id or receive a webhook - with billing metered in credits.
+Creatify is an AI avatar and marketing-video generation platform that turns product URLs, scripts, images, and text into short-form video ads narrated by ultra-realistic AI avatars. The Creatify API (base https://api.creatify.ai/api, authenticated with X-API-ID / X-API-KEY headers) exposes AI Avatar (Lipsync v1/v2 and Aurora image-to-avatar), Link-to-Video, AI Shorts and Custom Template video generation, Text-to-Speech and voice cloning, a 1500+ Persona/avatar catalog, a voice catalog, and a music library. Generation is asynchronous - create a job, then poll the job by id or receive a webhook - with billing metered in credits.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/creatify/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/creatify/refs/heads/main/apis.yml)
+**Areas:** AI Avatars · Video Generation · AI Video · Generative AI · Marketing Video · Text-to-Speech · UGC Ads · AI Avatar
 
-## Access Model (Honest Note)
+## Creatify on APIs.io
 
-The Creatify API is real and documented at [docs.creatify.ai](https://docs.creatify.ai), but it is **not open**: API access requires an active paid subscription, and credentials (`X-API-ID` + `X-API-KEY`) are issued from the in-app API Dashboard at [app.creatify.ai](https://app.creatify.ai). Creatify's public docs describe a dedicated **API Starter** ($99/mo, 500 credits) and **API Pro** ($299/mo, 2,000 credits) tier plus Enterprise, in addition to the consumer Free/Starter/Pro plans. Every generation endpoint follows an **asynchronous create-then-poll** pattern (POST to create a job, GET the job by `id` to check `status`/`progress`, or supply a `webhook_url`), and all output is metered in **credits** (typically ~5 credits per 30 seconds of video, ~1 credit per 30 seconds of audio).
+Everything profiled for Creatify is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/creatify/](https://apis.io/providers/creatify/)** — or go straight to one of the APIs or properties below.
 
-The endpoints and paths in this entry are grounded in Creatify's live API reference where a reference page was available (AI Avatar Lipsync v1/v2, Link-to-Video, AI Shorts, Text-to-Speech, Personas, Voices). A few paths for product areas without a fully-published reference page (Product-to-Video, Music categories/tracks, AI Editing) are **honestly modeled** from Creatify's documented product areas and the platform's consistent `/api/{resource}/` + `/api/{resource}/{id}/` convention, and are flagged as modeled in the OpenAPI and review files. Verify exact request/response schemas against the live docs before building.
+### APIs (10)
 
-## Tags
+- [Creatify AI Avatar API](https://apis.io/apis/creatify/creatify-ai-avatar-api/) — Lipsync v1/v2 and Aurora avatar video generation.
+- [Creatify AI Editing API](https://apis.io/apis/creatify/creatify-ai-editing-api/) — Enhance and stylize existing videos (modeled).
+- [Creatify AI Shorts API](https://apis.io/apis/creatify/creatify-ai-shorts-api/) — Convert a text script into a short-form video (deprecated).
+- [Creatify Custom Templates API](https://apis.io/apis/creatify/creatify-custom-templates-api/) — Generate videos from customizable templates (modeled).
+- [Creatify Link-to-Video API](https://apis.io/apis/creatify/creatify-link-to-video-api/) — Turn a URL into a short-form video ad.
+- [Creatify Music API](https://apis.io/apis/creatify/creatify-music-api/) — Background-music categories and tracks (modeled).
+- [Creatify Personas API](https://apis.io/apis/creatify/creatify-personas-api/) — Catalog of 1500+ AI avatars/personas.
+- [Creatify Product-to-Video API](https://apis.io/apis/creatify/creatify-product-to-video-api/) — Generate video ads from product images (modeled).
+- [Creatify Text-to-Speech API](https://apis.io/apis/creatify/creatify-text-to-speech-api/) — Generate voiceovers from text.
+- [Creatify Voices API](https://apis.io/apis/creatify/creatify-voices-api/) — Catalog of AI voices and accents.
 
-- AI Avatars
-- Video Generation
-- AI Video
-- Generative AI
-- Marketing Video
-- Text to Speech
-- UGC Ads
-- AI Avatar
+### Published properties
 
-## Timestamps
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-- **Created:** 2026-07-11
-- **Modified:** 2026-07-11
+#### MCP servers (1)
 
-## APIs
+Model Context Protocol servers that expose the API to agents.
 
-### Creatify AI Avatar API
+- [creatify](https://apis.io/servers/creatify/creatify/)
 
-Turn text or audio plus a chosen avatar/persona into ultra-realistic talking-head videos. Lipsync v1 (single scene) and Lipsync v2 (multi-scene, with per-scene characters, voices, and backgrounds), plus the Aurora image-to-avatar model. Asynchronous - POST to create, then GET the job by id to poll status.
+#### Agentic access (1)
 
-- **Human URL:** [https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2](https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2)
-- **Base URL:** `https://api.creatify.ai/api`
+Which operations an agent can call, which act, and which need a human in the loop.
 
-#### Tags
+- [Creatify Agentic Access](https://apis.io/agentic-access/creatify/creatify-agentic-access/)
 
-- AI Avatars
-- AI Video
-- Video Generation
-- Lipsync
-- Aurora
+#### Collections (11)
 
-#### Properties
+Postman and Open Collection request collections.
 
-- [Documentation](https://docs.creatify.ai/api-documentation/ai-avatar/lipsync-v2)
-- [API Reference](https://docs.creatify.ai/api-reference/text-to-speech)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [Creatify API](https://apis.io/collections/creatify/open-creatify/)
+- [Creatify AI Avatar API](https://apis.io/collections/creatify/open-creatify-ai-avatar-api/)
+- [Creatify AI Avatar AI Editing API](https://apis.io/collections/creatify/open-creatify-ai-editing-api/)
+- [Creatify AI Avatar AI Shorts API](https://apis.io/collections/creatify/open-creatify-ai-shorts-api/)
+- [Creatify AI Avatar Custom Templates API](https://apis.io/collections/creatify/open-creatify-custom-templates-api/)
+- [Creatify AI Avatar Link-to-Video API](https://apis.io/collections/creatify/open-creatify-link-to-video-api/)
+- [Creatify AI Avatar Music API](https://apis.io/collections/creatify/open-creatify-music-api/)
+- [Creatify AI Avatar Personas API](https://apis.io/collections/creatify/open-creatify-personas-api/)
+- [Creatify AI Avatar Product-to-Video API](https://apis.io/collections/creatify/open-creatify-product-to-video-api/)
+- [Creatify AI Avatar Text-to-Speech API](https://apis.io/collections/creatify/open-creatify-text-to-speech-api/)
+- [Creatify AI Avatar Voices API](https://apis.io/collections/creatify/open-creatify-voices-api/)
 
-### Creatify Link-to-Video API
+#### Security (2)
 
-Transform a product or landing-page URL into a short-form video ad. Create a link from a URL (`POST /links/`), generate a link-to-video job, and render it (`POST /link_to_videos/{id}/render/`). Async create-then-poll; billed per 30 seconds of rendered video.
+Authentication, trust centre, and vulnerability disclosure.
 
-- **Human URL:** [https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render](https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render)
-- **Base URL:** `https://api.creatify.ai/api`
+- [Creatify Authentication](https://apis.io/security/creatify/creatify-authentication/)
+- [Creatify Domain Security](https://apis.io/security/creatify/creatify-domain-security/)
 
-#### Tags
+#### Plans and pricing (1)
 
-- Video Generation
-- Marketing Video
-- URL to Video
-- AI Video
+Published plans, tiers and prices.
 
-#### Properties
+- [Creatify Plans Pricing](https://apis.io/plans/creatify/creatify-plans-pricing/)
 
-- [Documentation](https://docs.creatify.ai/quickstart)
-- [API Reference](https://docs.creatify.ai/api-reference/link_to_videos/post-apilink_to_videos_render)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Rate limits (1)
 
-### Creatify AI Shorts API
+Published request limits.
 
-Convert a text script into a high-impact, viral short-form video (`POST /ai_shorts/`, `GET /ai_shorts/{id}/`). Accepts script, aspect ratio, and a visual style. Note - Creatify documents AI Shorts as deprecated in favor of Link-to-Video and AI Avatar; retained here for completeness.
+- [Creatify Rate Limits](https://apis.io/rate-limits/creatify/creatify-rate-limits/)
 
-- **Human URL:** [https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts](https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts)
-- **Base URL:** `https://api.creatify.ai/api`
+#### FinOps (1)
 
-#### Tags
+What the API costs to run, by operation.
 
-- Text to Video
-- AI Video
-- Short Form Video
-- Generative AI
+- [Creatify Finops](https://apis.io/finops/creatify/creatify-finops/)
 
-#### Properties
+## Where to find this API
 
-- [Documentation](https://docs.creatify.ai/api-documentation/ai-shorts/ai-shorts)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
-### Creatify Custom Templates API
-
-Generate videos from customizable, brand-ready templates by supplying template variables (`POST /custom_templates/`, `GET /custom_templates/{id}/`). Async create-then-poll; billed per 30 seconds of rendered video.
-
-- **Human URL:** [https://docs.creatify.ai/api-reference](https://docs.creatify.ai/api-reference)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- Marketing Video
-- Templates
-- Video Generation
-
-#### Properties
-
-- [API Reference](https://docs.creatify.ai/api-reference)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify Product-to-Video API
-
-Create studio-quality video ads from product images (`POST /product_to_video/`, `GET /product_to_video/{id}/`). Billed per image and per 30 seconds of generated footage. Endpoint paths are modeled from Creatify's documented product-to-video product area.
-
-- **Human URL:** [https://docs.creatify.ai/api-documentation/product-to-video/product-to-video](https://docs.creatify.ai/api-documentation/product-to-video/product-to-video)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- Marketing Video
-- Product Video
-- AI Video
-
-#### Properties
-
-- [Documentation](https://docs.creatify.ai/api-documentation/product-to-video/product-to-video)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify Text-to-Speech API
-
-Generate ultra-realistic voiceovers from text (up to 8000 characters) using AI voices and accents (`POST /text_to_speech/`, `GET /text_to_speech/{id}/`). Supports a `webhook_url` for status updates. Billed 1 credit per 30 seconds of audio.
-
-- **Human URL:** [https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech](https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- Text to Speech
-- Voiceover
-- Audio
-- Generative AI
-
-#### Properties
-
-- [Documentation](https://docs.creatify.ai/api-reference/text-to-speech)
-- [API Reference](https://docs.creatify.ai/api-reference/text-to-speech/post-text-to-speech)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify Personas API
-
-Browse the catalog of 1500+ realistic AI avatars/personas and manage custom avatars (BYOA). List personas (`GET /personas/`, `GET /personas/paginated/`) and get a persona by id (`GET /personas/{id}/`) to reference in avatar and link-to-video jobs.
-
-- **Human URL:** [https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated](https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- AI Avatars
-- Personas
-- Avatar Catalog
-
-#### Properties
-
-- [API Reference](https://docs.creatify.ai/api-reference/personas/get-apipersonas-paginated)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify Voices API
-
-List the available AI voices and accents (`GET /voices/`, `GET /voices/paginated/`) used by Text-to-Speech and AI Avatar jobs, and manage cloned custom voices. Voice ids are referenced as the accent/voice on generation endpoints.
-
-- **Human URL:** [https://docs.creatify.ai/api-reference](https://docs.creatify.ai/api-reference)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- Voices
-- Voice Cloning
-- Text to Speech
-
-#### Properties
-
-- [API Reference](https://docs.creatify.ai/api-reference)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify Music API
-
-Access the background-music library - list music categories (`GET /music_categories/`) and tracks (`GET /musics/`) - to attach soundtracks to generated videos. Read-only catalog endpoints; no credit cost to browse.
-
-- **Human URL:** [https://docs.creatify.ai/api-reference](https://docs.creatify.ai/api-reference)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- Music
-- Background Music
-- Media Library
-
-#### Properties
-
-- [API Reference](https://docs.creatify.ai/api-reference)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-### Creatify AI Editing API
-
-Automatically enhance and stylize an existing video with professional templates (`POST /ai_editing/`, `GET /ai_editing/{id}/`). Async create-then-poll.
-
-- **Human URL:** [https://docs.creatify.ai/api-documentation/ai-editing/ai-editing](https://docs.creatify.ai/api-documentation/ai-editing/ai-editing)
-- **Base URL:** `https://api.creatify.ai/api`
-
-#### Tags
-
-- AI Video
-- Video Editing
-- Marketing Video
-
-#### Properties
-
-- [Documentation](https://docs.creatify.ai/api-documentation/ai-editing/ai-editing)
-- [OpenAPI](openapi/creatify-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/creatify.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/creatify.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-
-## Common Properties
-
-- [Authentication](authentication/creatify-authentication.yml)
-- [Domain Security](security/creatify-domain-security.yml)
-- [LinkedIn](https://www.linkedin.com/company/creatify-ai)
 - [Website](https://creatify.ai)
 - [Documentation](https://docs.creatify.ai)
-- [Plans](plans/creatify-plans-pricing.yml)
-- [Rate Limits](rate-limits/creatify-rate-limits.yml)
-- [Fin Ops](finops/creatify-finops.yml)
 - [Blog](https://creatify.ai/blog)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 26.0** — emerging · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 68.3 |
+| Contract quality | 47.4 |
+| Contract governance | 0.0 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 32.1 |
+| Access clarity | 7.9 |
+
+**Agent readiness 44.8** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | partial |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | — |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 10.9** — AI & Biometrics
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/creatify/](https://apis.io/providers/creatify/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Creatify: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/creatify/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
